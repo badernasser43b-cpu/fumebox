@@ -30,7 +30,7 @@ async function init() {
     <nav class="small muted" aria-label="Breadcrumb" style="margin-bottom:1rem"><a href="shop.html">Shop</a> / ${esc(b.name)} Box</nav>
     <div class="box-detail">
       <div class="box-hero">
-        <img src="${esc(b.image_url || 'images/boxes/focus.svg')}" alt="${esc(b.name)} box illustration" width="600" height="480">
+        <img src="${esc(b.image_url || 'images/photos/boxes/custom.webp')}" alt="${esc(b.name)} gift box" width="600" height="480">
       </div>
       <div>
         <h1>${esc(b.name)} Box</h1>

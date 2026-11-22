@@ -366,3 +366,39 @@ details.qa .a { padding: 0 1.25rem 1.1rem; color: var(--muted); }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
+
+/* ---------- Product photography (real photos instead of illustrations) ---------- */
+:root { --photo-bg: #F4F2EF; --shadow-card: 0 1px 2px rgba(34,28,58,.06), 0 8px 24px -12px rgba(34,28,58,.22); --shadow-hover: 0 2px 4px rgba(34,28,58,.08), 0 18px 36px -16px rgba(34,28,58,.32); }
+
+/* Item cards: consistent square photo, white card, soft shadow, lift on hover */
+.items-grid { grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 1.5rem; }
+.item-card { border: 1px solid #ECE9F2; border-radius: 18px; box-shadow: var(--shadow-card); transition: transform .2s ease, box-shadow .2s ease; }
+.item-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
+.item-card .img-btn { background: var(--photo-bg); overflow: hidden; aspect-ratio: 1; }
+.item-card .img-btn img { width: 100%; height: 100%; aspect-ratio: 1; object-fit: cover; transition: transform .35s ease; }
+.item-card:hover .img-btn img { transform: scale(1.04); }
+.item-card .body { padding: 1rem 1.1rem 1.15rem; gap: .5rem; }
+.item-card h3 { font-size: 1rem; line-height: 1.35; min-height: 2.7em; }
+.item-card .meta { min-height: 1.6rem; }
+.item-card .row { padding-top: .75rem; border-top: 1px solid #F0EEF4; }
+.item-card .price { font-size: 1.15rem; letter-spacing: -.01em; }
+
+/* Signature box tiles (shop, home): photo on top, clean white card */
+.box-tile { background: var(--card); border: 1px solid #ECE9F2; border-radius: 20px; padding: 0; overflow: hidden; box-shadow: var(--shadow-card); transition: transform .2s ease, box-shadow .2s ease, border-color .2s; }
+.box-tile:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); border-color: var(--mood); }
+.box-tile img { width: 100%; aspect-ratio: 5 / 4; object-fit: cover; margin: 0; background: var(--photo-bg); }
+.box-tile h3, .box-tile p, .box-tile .foot { padding-inline: 1.15rem; }
+.box-tile h3 { margin-top: 1rem; }
+.box-tile .foot { padding-bottom: 1.15rem; }
+@media (max-width: 520px) { .box-tile { flex-direction: row; align-items: center; gap: 0; } .box-tile img { width: 112px; height: 112px; aspect-ratio: 1; } .box-tile h3 { margin-top: 0; } }
+
+/* Home hero box and box detail: framed photo */
+.box-card .box-art { aspect-ratio: 5 / 3.4; object-fit: cover; border-radius: 18px; background: var(--photo-bg); box-shadow: 0 10px 30px -18px rgba(0,0,0,.45); }
+.box-hero img { aspect-ratio: 5 / 4; object-fit: cover; border-radius: 18px; background: var(--photo-bg); }
+.contents-list img { background: var(--photo-bg); }
+
+/* Item detail dialog, builder slots, cart thumbnails */
+.sheet-inner .art { background: var(--photo-bg); }
+.slot img { background: var(--photo-bg); }
+.cart-line .thumb { background: var(--photo-bg); }
+.cart-line .thumb img { object-fit: cover; padding: 0; }

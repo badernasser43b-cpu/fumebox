@@ -14,7 +14,7 @@ async function init() {
 
   $('#boxesGrid').innerHTML = cat.collections.map((b) => `
     <a class="box-tile" href="box.html?slug=${encodeURIComponent(b.slug)}" style="${moodStyle(b.theme_color)}">
-      <img src="${esc(b.image_url || 'images/boxes/focus.svg')}" alt="" width="300" height="300" loading="lazy">
+      <img src="${esc(b.image_url || 'images/photos/boxes/custom.webp')}" alt="" width="300" height="300" loading="lazy">
       <div>
         <h3>${esc(b.name)} Box</h3>
         <p>${esc(b.tagline)}</p>

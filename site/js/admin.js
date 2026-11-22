@@ -310,7 +310,7 @@ function boxEditor(c) {
         <div class="field"><label for="b-sort">Display order</label><input id="b-sort" name="sort_order" type="number" step="1" value="${c?.sort_order ?? data.collections.length + 1}"></div>
         <div class="field" style="align-content:center"><label class="check"><input type="checkbox" name="is_active" ${c ? (c.is_active ? 'checked' : '') : 'checked'}> Show in store</label></div>
         <div class="field full"><label for="b-file">Box image</label>
-          <div style="display:flex;gap:1rem;align-items:center"><img class="img-preview" id="b-prev" src="${esc(c?.image_url || 'images/boxes/custom.svg')}" alt="">
+          <div style="display:flex;gap:1rem;align-items:center"><img class="img-preview" id="b-prev" src="${esc(c?.image_url || 'images/photos/boxes/custom.webp')}" alt="">
           <div style="flex:1;display:grid;gap:.5rem"><input id="b-file" type="file" accept="image/jpeg,image/png,image/webp"><input id="b-url" name="image_url" type="text" placeholder="…or an image URL starting with https://" value="${esc(c?.image_url || '')}"></div></div></div>
       </div>
       <h3 style="font-family:var(--body);font-size:1.1rem;margin-top:.5rem">Contents</h3>

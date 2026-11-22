@@ -24,7 +24,7 @@ function lineHtml(x) {
     const b = x.box;
     const max = Math.min(BOX_MAX, b?.maxQty || 0);
     return `<article class="cart-line" style="${moodStyle(b?.theme_color || '#5B3FD9')}">
-      <div class="thumb"><img src="${esc(b?.image_url || 'images/boxes/focus.svg')}" alt=""></div>
+      <div class="thumb"><img src="${esc(b?.image_url || 'images/photos/boxes/custom.webp')}" alt=""></div>
       <div>
         <h3>${esc(b ? b.name + ' Box' : 'Box no longer available')}</h3>
         ${b ? `<ul>${b.items.map((it) => `<li>${it.quantity > 1 ? it.quantity + ' × ' : ''}${esc(it.product.name)}</li>`).join('')}</ul>` : ''}
@@ -39,7 +39,7 @@ function lineHtml(x) {
     </article>`;
   }
   return `<article class="cart-line">
-    <div class="thumb" style="background:var(--ink)"><img src="images/boxes/custom.svg" alt=""></div>
+    <div class="thumb"><img src="images/photos/boxes/custom.webp" alt=""></div>
     <div>
       <h3>Build-Your-Own Box</h3>
       <ul>${x.items.map((it) => `<li>${it.quantity > 1 ? it.quantity + ' × ' : ''}${esc(it.product?.name || 'Removed item')}${it.product ? ' — ' + aed(it.product.price_aed * it.quantity) : ''}</li>`).join('')}<li>Gift box &amp; wrapping — ${aed(15)}</li></ul>
