@@ -16,9 +16,9 @@ async function init() {
     <a class="box-tile" href="box.html?slug=${encodeURIComponent(b.slug)}" style="${moodStyle(b.theme_color)}">
       <img src="${esc(b.image_url || 'images/perfume/boxes/custom.webp')}" alt="" width="300" height="300" loading="lazy">
       <div>
-        <h3>${esc(b.name)} Box</h3>
+        <h3>${esc(b.name)} Gift Set</h3>
         <p>${esc(b.tagline)}</p>
-        <div class="foot"><span>${aed(b.boxPrice)}</span><span class="small muted">${b.maxQty === 0 ? 'Out of stock' : b.items.length + ' items'}</span></div>
+        <div class="foot"><span>${aed(b.boxPrice)}</span><span class="small muted">${b.maxQty === 0 ? 'Out of stock' : b.items.length + ' perfumes'}</span></div>
       </div>
     </a>`).join('') || '<p class="muted">No gift sets are available right now.</p>';
 

@@ -41,7 +41,7 @@ function lineHtml(x) {
   return `<article class="cart-line">
     <div class="thumb"><img src="images/perfume/boxes/custom.webp" alt=""></div>
     <div>
-      <h3>Build-Your-Own Box</h3>
+      <h3>Build-Your-Own Gift Box</h3>
       <ul>${x.items.map((it) => `<li>${it.quantity > 1 ? it.quantity + ' × ' : ''}${esc(it.product?.name || 'Removed perfume')}${it.product ? ' — ' + aed(it.product.price_aed * it.quantity) : ''}</li>`).join('')}<li>Gift box &amp; wrapping — ${aed(15)}</li></ul>
       <label class="gift-input small"><span class="sr">Gift message</span><input type="text" maxlength="200" data-gift="${l.id}" value="${esc(l.gift_message || '')}" placeholder="Add a gift message (optional)"></label>
       ${x.problem ? `<p class="problem" role="alert">${esc(x.problem)}</p>` : ''}
@@ -150,7 +150,7 @@ function showConfirmation(res, lines, f) {
     <p class="muted" style="margin:1.5rem auto 0">Your order reference</p>
     <div class="ref" data-ref>${esc(res.reference)}</div>
     <div class="panel" style="text-align:left">
-      <ul style="margin:0 0 1rem;padding-left:1.1rem">${t.priced.map((x) => `<li>${x.line.type === 'signature' ? `${x.line.quantity} × ${esc(x.box?.name)} Gift Set` : 'Build-Your-Own Box'} — ${aed(x.total)}</li>`).join('')}</ul>
+      <ul style="margin:0 0 1rem;padding-left:1.1rem">${t.priced.map((x) => `<li>${x.line.type === 'signature' ? `${x.line.quantity} × ${esc(x.box?.name)} Gift Set` : 'Build-Your-Own Gift Box'} — ${aed(x.total)}</li>`).join('')}</ul>
       <div class="totals" style="margin:0">
         <div><span>Subtotal</span><span>${aed(res.subtotal_aed)}</span></div>
         <div><span>Delivery</span><span>${Number(res.delivery_aed) ? aed(res.delivery_aed) : 'Free'}</span></div>

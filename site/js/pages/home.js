@@ -27,7 +27,7 @@ async function init() {
     $('#heroBox').innerHTML = `
       <article class="box-card${animate ? ' swap' : ''}">
         <img class="box-art" src="${esc(b.image_url || 'images/perfume/boxes/custom.webp')}" alt="" width="500" height="340">
-        <h2>${esc(b.name)} Box</h2>
+        <h2>${esc(b.name)} Gift Set</h2>
         <p class="tag">${esc(b.tagline)}</p>
         <ul class="box-contents" aria-label="What's inside">${b.items.map((it) => `<li>${it.quantity > 1 ? it.quantity + ' × ' : ''}${esc(it.product.name)}</li>`).join('')}</ul>
         <div class="box-price"><strong>${aed(b.boxPrice)}</strong>${b.discount_pct > 0 ? `<s>${aed(b.listPrice)}</s><span>Save ${b.discount_pct}%</span>` : ''}</div>
@@ -39,7 +39,7 @@ async function init() {
     $('[data-add]', $('#heroBox'))?.addEventListener('click', () => {
       addSignature(b.id, 1, b.maxQty);
       track('add_to_cart', { collectionId: b.id });
-      toast(`${b.name} Box added to your cart.`);
+      toast(`${b.name} Gift Set added to your cart.`);
     });
   };
   sw.addEventListener('click', (e) => { const btn = e.target.closest('button[data-slug]'); if (btn) { show(btn.dataset.slug, true); track('box_view', { collectionId: cat.bySlug.get(btn.dataset.slug).id }); } });
@@ -51,7 +51,7 @@ async function init() {
       <div>
         <h3>${esc(b.name)}</h3>
         <p>${esc(b.tagline)}</p>
-        <div class="foot"><span>${aed(b.boxPrice)}</span><span class="small muted">${b.items.length} items</span></div>
+        <div class="foot"><span>${aed(b.boxPrice)}</span><span class="small muted">${b.items.length} perfumes</span></div>
       </div>
     </a>`).join('');
 

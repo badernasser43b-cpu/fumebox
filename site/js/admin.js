@@ -129,7 +129,7 @@ views.overview = async () => {
     <div class="kpis">
       <div class="kpi"><div class="v">${week.length}</div><div class="k">Orders, last 7 days</div></div>
       <div class="kpi"><div class="v">${aed(week.reduce((s, o) => s + Number(o.total_aed), 0))}</div><div class="k">Demo revenue, last 7 days</div></div>
-      <div class="kpi"><div class="v">${active.length}</div><div class="k">Active items</div></div>
+      <div class="kpi"><div class="v">${active.length}</div><div class="k">Active perfumes</div></div>
       <div class="kpi"><div class="v">${data.collections.filter((c) => c.is_active).length}</div><div class="k">Active gift sets</div></div>
       <div class="kpi"><div class="v" style="color:${low.length ? 'var(--danger)' : 'inherit'}">${low.length}</div><div class="k">Items with 5 or fewer in stock</div></div>
     </div>
