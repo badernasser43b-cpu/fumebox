@@ -7,13 +7,13 @@ checked on the **live** site, not the local mock.
 
 | What | Where |
 |---|---|
-| Public store | https://badernasser43b-cpu.github.io/moodbox/ |
-| Admin dashboard | https://badernasser43b-cpu.github.io/moodbox/admin.html |
-| Code (public) | https://github.com/badernasser43b-cpu/moodbox |
+| Public store | https://badernasser43b-cpu.github.io/bloombox/ |
+| Admin dashboard | https://badernasser43b-cpu.github.io/bloombox/admin.html |
+| Code (public) | https://github.com/badernasser43b-cpu/bloombox |
 | Database | Supabase project `moodbox` (free plan, Mumbai), organization "MOODBOX BIS 2103" |
 
-The store is branded **BLOOMBOX** (renamed from MOODBOX). The web address and
-repository still use `moodbox`, so the link above stays valid.
+The store is branded **BLOOMBOX** (renamed from MOODBOX on 22 Nov 2026; the
+old `…/moodbox/` address no longer works).
 
 ## Architecture
 
