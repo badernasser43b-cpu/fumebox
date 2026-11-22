@@ -1,5 +1,5 @@
 """
-End-to-end browser tests for MOODBOX (real Chrome via Playwright) against the
+End-to-end browser tests for BLOOMBOX (real Chrome via Playwright) against the
 local harness (tests/dev-server.mjs → local Postgres with the real schema).
 
 Usage:  ./tests/reset_db.sh && python3 tests/test_e2e.py [screenshot_dir]
@@ -226,7 +226,7 @@ with sync_playwright() as p:
     check("analytics: order count matches database", orders_kpi == real_orders, f"{orders_kpi} vs {real_orders}")
     with admin.expect_download() as dl: admin.click("#csv")
     csv_path = dl.value.path(); text = pathlib.Path(csv_path).read_text(encoding="utf-8-sig")
-    check("analytics: CSV export downloads with daily rows", "Day,Sessions" in text and "MOODBOX analytics export" in text)
+    check("analytics: CSV export downloads with daily rows", "Day,Sessions" in text and "BLOOMBOX analytics export" in text)
     shot(admin, "13-admin-analytics", full=True)
 
     # ---------- 13. Admin: site content ----------

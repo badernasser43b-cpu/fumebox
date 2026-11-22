@@ -1,5 +1,5 @@
 -- =====================================================================
--- MOODBOX — BIS 2103 e-commerce DEMONSTRATION database (Supabase / Postgres 15+)
+-- BLOOMBOX — BIS 2103 e-commerce DEMONSTRATION database (Supabase / Postgres 15+)
 -- Run once in the Supabase SQL Editor (then storage.sql, then seed.sql).
 --
 -- Security model

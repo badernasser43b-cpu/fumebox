@@ -1,4 +1,4 @@
-/* MOODBOX admin dashboard */
+/* BLOOMBOX admin dashboard */
 body.admin { background: #F1EFF7; }
 .login { min-height: 100vh; display: grid; place-items: center; padding: 1.5rem; }
 .login .panel { width: min(420px, 100%); }

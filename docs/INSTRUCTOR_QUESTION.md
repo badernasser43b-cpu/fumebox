@@ -4,7 +4,7 @@
 
 Dear Dr. Bentahar,
 
-Our group is building the e-commerce portfolio website for MOODBOX, a themed gift-box store. Before we go further, we would like to confirm three points:
+Our group is building the e-commerce portfolio website for BLOOMBOX, a themed gift-box store. Before we go further, we would like to confirm three points:
 
 1. **Hosting platform.** The free Wix plan does not allow customers to place orders: checkout requires a paid plan. To keep a working demonstration order form at no cost, we have built the site ourselves and host it on GitHub Pages (free), with a free Supabase database for products, orders and the admin login. Is this acceptable for Stage 2? For Stage 5, may we evaluate the security of GitHub Pages and Supabase instead of Wix?
 

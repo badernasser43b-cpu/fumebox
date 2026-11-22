@@ -1,4 +1,4 @@
--- MOODBOX demonstration catalogue. Runs only on an empty database (re-run safe).
+-- BLOOMBOX demonstration catalogue. Runs only on an empty database (re-run safe).
 -- Prices are realistic sample retail prices in AED for a demonstration store.
 
 insert into public.collections (slug, name, tagline, description, theme_color, image_url, discount_pct, sort_order)
@@ -73,14 +73,14 @@ where not exists (select 1 from public.collection_items);
 -- Editable business content. Every value is a PLACEHOLDER until the group
 -- replaces it in Admin → Site content.
 update public.site_settings set content = jsonb_build_object(
-  'store_name', 'MOODBOX',
+  'store_name', 'BLOOMBOX',
   'tagline', 'Gift boxes for every mood',
-  'about', 'MOODBOX is a demonstration online store created for the BIS 2103 Business Information Systems course at Higher Colleges of Technology. We sell themed gift and lifestyle boxes — Focus, Relax, Gaming and Travel — and let customers build their own box from individual items.',
+  'about', 'BLOOMBOX is a demonstration online store created for the BIS 2103 Business Information Systems course at Higher Colleges of Technology. We sell themed gift and lifestyle boxes — Focus, Relax, Gaming and Travel — and let customers build their own box from individual items.',
   'mission', 'To make thoughtful gifting effortless by curating useful, good-quality items into boxes that match how people feel and what they need.',
   'vision', 'To be the UAE''s go-to online destination for personalised, mood-based gift boxes for students and young professionals.',
   'strategy', 'Differentiation through personalisation: curated signature boxes at a 10% bundle saving, plus a Build-Your-Own option. Mobile-first shopping, free delivery over AED 200, weekly analytics-driven improvements, and ERP-based purchasing and stock control to avoid stock-outs.',
   'target_customers', 'College students and young professionals in the UAE aged 18–30 who buy gifts for friends and family or treat themselves, shop mostly on their phones, and value personalisation, fair prices and fast delivery.',
-  'management', 'MOODBOX is run by a small founding team. Each member owns one business function — operations and inventory, marketing and analytics, website and customer experience, finance and ERP, and customer service — and the team meets weekly to review analytics and agree improvements.',
+  'management', 'BLOOMBOX is run by a small founding team. Each member owns one business function — operations and inventory, marketing and analytics, website and customer experience, finance and ERP, and customer service — and the team meets weekly to review analytics and agree improvements.',
   'team', jsonb_build_array(
     jsonb_build_object('name', '[Group member 1]', 'role', 'Operations & Inventory Manager'),
     jsonb_build_object('name', '[Group member 2]', 'role', 'Marketing & Analytics Manager'),
@@ -88,7 +88,7 @@ update public.site_settings set content = jsonb_build_object(
     jsonb_build_object('name', '[Group member 4]', 'role', 'Finance & ERP Lead'),
     jsonb_build_object('name', '[Group member 5]', 'role', 'Customer Service Lead')
   ),
-  'email', 'hello@moodbox.example',
+  'email', 'hello@bloombox.example',
   'phone', '+971 00 000 0000',
   'address', 'Demonstration location — Abu Dhabi, United Arab Emirates',
   'map_query', 'Abu Dhabi, United Arab Emirates',

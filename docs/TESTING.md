@@ -1,4 +1,4 @@
-# MOODBOX — Test evidence
+# BLOOMBOX — Test evidence
 
 Last run: 22 Nov 2026, on a local copy of the database built from the same `supabase/*.sql` files that go live. Full output is in `evidence/database-results.txt` and `evidence/e2e-results.txt`. Screenshots are in `evidence/screenshots/` (user flows) and `evidence/pages/` (every page, desktop 1440 px and mobile 390 px).
 

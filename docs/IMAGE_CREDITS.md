@@ -6,7 +6,7 @@ All product and box photos in `site/images/photos/` are real photographs from
 commercially, no permission needed; selling unaltered copies is not allowed).
 They were resized and cropped to WebP for the website.
 
-These are **illustrative stock photos**, not photos of stock MOODBOX holds:
+These are **illustrative stock photos**, not photos of stock BLOOMBOX holds:
 in a few cases the photo is a close match rather than the exact product
 (for example, the keyboard-cleaning kit uses a keycap photo).
 State this in the report if product photos are discussed.

@@ -18,7 +18,7 @@ async function init() {
     root.innerHTML = `<div class="state"><h2>Box not found</h2><p>This box may have been removed.</p><a class="btn" href="shop.html">See all boxes</a></div>`;
     return;
   }
-  document.title = `${b.name} Box — MOODBOX`;
+  document.title = `${b.name} Box — BLOOMBOX`;
   applyMood(document.documentElement, b.theme_color);
   track('box_view', { collectionId: b.id });
 

@@ -1,4 +1,4 @@
-// MOODBOX admin dashboard. Every read/write here is authorised by the database
+// BLOOMBOX admin dashboard. Every read/write here is authorised by the database
 // (Row Level Security + is_admin()); hiding UI is a convenience, not the security boundary.
 import { sb, isConfigured } from './api.js';
 import { esc, aed, $, $$, toast, moodStyle } from './ui.js';
@@ -176,7 +176,7 @@ views.items = async () => {
   $('#fm').addEventListener('change', (e) => { state.mood = e.target.value; render(); });
   $('#fa').addEventListener('change', (e) => { state.showArchived = e.target.checked; render(); });
   $('#addItem').addEventListener('click', () => itemEditor(null));
-  $('#exportItems').addEventListener('click', () => download('moodbox-items.csv', [['id', 'name', 'box', 'category', 'price_aed', 'stock', 'available', 'archived'],
+  $('#exportItems').addEventListener('click', () => download('bloombox-items.csv', [['id', 'name', 'box', 'category', 'price_aed', 'stock', 'available', 'archived'],
     ...data.products.map((p) => [p.id, p.name, colName(p.collection_id), p.category, p.price_aed, p.stock, p.is_available, p.is_archived])]));
   $('#rows').addEventListener('click', async (e) => {
     const ed = e.target.closest('[data-edit]'), ar = e.target.closest('[data-arch]'), de = e.target.closest('[data-del]');
@@ -394,7 +394,7 @@ views.orders = async () => {
     try { must(await sb.from('orders').update({ status: s.value }).eq('id', s.dataset.status).select()); toast(`Order marked ${s.value}.`); refreshBadges(); }
     catch (err) { toast(friendly(err), 'error'); }
   });
-  $('#exportOrders').addEventListener('click', () => download('moodbox-orders.csv', [['reference', 'created_at_utc', 'status', 'emirate', 'box', 'type', 'box_qty', 'item', 'item_units', 'item_unit_price_aed', 'order_subtotal_aed', 'order_delivery_aed', 'order_total_aed'],
+  $('#exportOrders').addEventListener('click', () => download('bloombox-orders.csv', [['reference', 'created_at_utc', 'status', 'emirate', 'box', 'type', 'box_qty', 'item', 'item_units', 'item_unit_price_aed', 'order_subtotal_aed', 'order_delivery_aed', 'order_total_aed'],
     ...orders.flatMap((o) => o.order_lines.flatMap((l) => l.order_line_items.map((i) => [o.reference, o.created_at, o.status, o.emirate, l.title, l.line_type, l.quantity, i.product_name, i.qty_total, i.unit_price_aed, o.subtotal_aed, o.delivery_aed, o.total_aed])))]));
 };
 
@@ -487,8 +487,8 @@ views.analytics = async () => {
   $('#csv').addEventListener('click', () => {
     if (!rep) return toast('Run a report first.', 'error');
     const t = rep.totals;
-    download(`moodbox-analytics-${$('#from').value}-to-${$('#to').value}.csv`, [
-      ['MOODBOX analytics export', `${$('#from').value} to ${$('#to').value} (UAE)`], [],
+    download(`bloombox-analytics-${$('#from').value}-to-${$('#to').value}.csv`, [
+      ['BLOOMBOX analytics export', `${$('#from').value} to ${$('#to').value} (UAE)`], [],
       ['Metric', 'Value'], ...Object.entries(t), [],
       ['Day', 'Sessions', 'Page views', 'Add to cart', 'Orders', 'Revenue AED'], ...rep.daily.map((d) => [d.day, d.sessions, d.page_views, d.add_to_cart, d.orders, d.revenue_aed]), [],
       ['Page', 'Views'], ...rep.pages.map((p) => [p.page, p.views]), [],
