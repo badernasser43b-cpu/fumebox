@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self'; connect-src 'self' https://*.supabase.co wss://*.supabase.co; frame-src https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Cart and checkout — MOODBOX</title>
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/vendor/supabase.js" defer></script>
+  <script type="module" src="js/pages/cart.js"></script>
+</head>
+<body data-page="cart">
+<main>
+  <div class="wrap page-head" id="head">
+    <h1>Your cart</h1>
+  </div>
+  <div class="wrap" id="cartRoot"><div class="skeleton"></div></div>
+
+  <template id="checkoutTpl">
+    <form class="panel" id="checkout" novalidate aria-labelledby="coTitle">
+      <h2 id="coTitle">Checkout</h2>
+      <div class="totals" id="totals"></div>
+      <p class="notice notice-warn small"><strong>Demonstration only.</strong> Submitting this form records a sample order for our college project. No payment is taken, nothing is charged and nothing will be delivered. Please use test details, not real personal information.</p>
+      <div id="formError" class="form-error" role="alert" hidden></div>
+      <div class="form-grid">
+        <div class="field full"><label for="name">Full name</label><input id="name" name="name" type="text" autocomplete="name" required minlength="2" maxlength="80"><span class="error" id="name-err"></span></div>
+        <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required maxlength="120"><span class="error" id="email-err"></span></div>
+        <div class="field"><label for="phone">Mobile number</label><input id="phone" name="phone" type="tel" autocomplete="tel" required placeholder="+971 50 123 4567"><span class="error" id="phone-err"></span></div>
+        <div class="field full"><label for="address">Delivery address</label><input id="address" name="address" type="text" autocomplete="street-address" required minlength="5" maxlength="300" placeholder="Building, street, area"><span class="error" id="address-err"></span></div>
+        <div class="field full"><label for="emirate">Emirate</label>
+          <select id="emirate" name="emirate" required><option value="">Choose an emirate</option><option>Abu Dhabi</option><option>Dubai</option><option>Sharjah</option><option>Ajman</option><option>Umm Al Quwain</option><option>Ras Al Khaimah</option><option>Fujairah</option></select><span class="error" id="emirate-err"></span></div>
+        <div class="field full"><label for="notes">Delivery notes <span class="muted small">(optional)</span></label><textarea id="notes" name="notes" maxlength="500" rows="3" placeholder="Landmark, preferred time…"></textarea></div>
+      </div>
+      <label class="small" style="display:flex;gap:.5rem;align-items:start;margin-bottom:1rem"><input type="checkbox" id="ack" required style="margin-top:.3rem"> <span>I understand this is a demonstration order and no real purchase is made.</span></label>
+      <span class="error small" id="ack-err" style="color:var(--danger);display:block;margin:-.5rem 0 1rem"></span>
+      <button class="btn btn-block" type="submit" id="placeBtn">Place demonstration order</button>
+      <p class="small muted" style="margin-top:.75rem">By placing an order you agree to our <a href="faq.html#returns">returns policy</a>. Your details are visible only to the store administrators.</p>
+    </form>
+  </template>
+</main>
+</body>
+</html>

@@ -1,0 +1,25 @@
+{
+  "name": "moodbox",
+  "version": "1.0.0",
+  "description": "MOODBOX \u2014 BIS 2103 e-commerce demonstration (static site + Supabase)",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "dev": "node tests/dev-server.mjs",
+    "test:db": "./tests/reset_db.sh && python3 tests/test_database.py",
+    "test:e2e": "./tests/reset_db.sh && python3 tests/test_e2e.py",
+    "images": "python3 tools/make_images.py"
+  },
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.119.2",
+    "jsonwebtoken": "^9.0.3",
+    "pg": "^8.23.1"
+  },
+  "devDependencies": {
+    "@fontsource-variable/bricolage-grotesque": "^5.3.0",
+    "@fontsource/instrument-sans": "^5.3.0"
+  },
+  "private": true
+}

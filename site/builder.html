@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self'; connect-src 'self' https://*.supabase.co wss://*.supabase.co; frame-src https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Build your own box — MOODBOX</title>
+  <meta name="description" content="Choose 3 to 8 items and build your own MOODBOX gift box. The price updates as you add items.">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/vendor/supabase.js" defer></script>
+  <script type="module" src="js/pages/builder.js"></script>
+</head>
+<body data-page="builder" class="builder-page">
+<main>
+  <div class="wrap page-head">
+    <h1>Build your own box</h1>
+    <p class="lead">Choose 3 to 8 items from any mood. Your total updates with every item, and includes AED 15 for the gift box and wrapping.</p>
+    <p class="notice" id="fromNotice" hidden></p>
+  </div>
+  <div class="wrap builder">
+    <section aria-labelledby="pickTitle">
+      <h2 id="pickTitle" class="sr">Choose items</h2>
+      <div class="toolbar">
+        <label class="search"><span class="sr">Search items</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <input type="search" id="q" placeholder="Search items" autocomplete="off">
+        </label>
+      </div>
+      <div class="chip-row" id="moodChips" role="group" aria-label="Filter by mood" style="margin-bottom:1.25rem"></div>
+      <div class="items-grid" id="itemsGrid"><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div></div>
+    </section>
+
+    <aside class="builder-panel" id="panel" aria-labelledby="boxTitle">
+      <div class="lid">
+        <h2 id="boxTitle">Your box</h2>
+        <span id="countText">0 of 8 items</span>
+        <div class="meter" aria-hidden="true"><span id="meter"></span></div>
+      </div>
+      <div class="slots" id="slots" aria-live="polite"></div>
+      <div class="summary">
+        <div class="line"><span>Items</span><span id="itemsTotal">AED 0</span></div>
+        <div class="line"><span>Gift box &amp; wrapping</span><span id="wrapFee">AED 15</span></div>
+        <div class="line"><strong>Box total</strong><span class="total" id="boxTotal">AED 0</span></div>
+        <div class="field" style="margin:.5rem 0 0">
+          <label for="gift">Gift message <span class="muted small">(optional)</span></label>
+          <input type="text" id="gift" maxlength="200" placeholder="Happy birthday, Sara!">
+        </div>
+        <p class="small" id="ruleText" role="status"></p>
+        <button class="btn btn-block" type="button" id="addBox" disabled>Add box to cart</button>
+        <button class="link-btn" type="button" id="clearBox" style="justify-self:center">Empty box</button>
+      </div>
+    </aside>
+  </div>
+  <button class="builder-bar" type="button" id="bar" aria-controls="panel" aria-expanded="false">
+    <span><span id="barCount">Your box is empty</span><small id="barHint">Tap to view your box</small></span>
+    <span class="btn btn-sm" id="barTotal" aria-hidden="true">AED 0</span>
+  </button>
+</main>
+</body>
+</html>

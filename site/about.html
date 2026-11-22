@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self'; connect-src 'self' https://*.supabase.co wss://*.supabase.co; frame-src https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>About us — MOODBOX</title>
+  <meta name="description" content="About MOODBOX: our mission, vision, strategy, customers and team.">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/vendor/supabase.js" defer></script>
+  <script type="module" src="js/pages/about.js"></script>
+</head>
+<body data-page="about">
+<main>
+  <div class="wrap page-head">
+    <h1>About <span data-setting="store_name">MOODBOX</span></h1>
+    <p class="lead" data-setting="about">MOODBOX is a demonstration online store created for the BIS 2103 course.</p>
+  </div>
+
+  <section class="wrap section-tight" aria-label="Mission, vision and strategy">
+    <div class="statement-grid">
+      <div class="statement" style="--sc:#3D5AFE"><h2>Mission</h2><p data-setting="mission"></p></div>
+      <div class="statement" style="--sc:#A0618F"><h2>Vision</h2><p data-setting="vision"></p></div>
+      <div class="statement" style="--sc:#10A374"><h2>Strategy</h2><p data-setting="strategy"></p></div>
+    </div>
+  </section>
+
+  <section class="wrap section-tight two-col">
+    <div><h2>Who we serve</h2><p data-setting="target_customers"></p></div>
+    <div><h2>Management and employment</h2><p data-setting="management"></p>
+      <p class="muted small">Interested in working with us? We recruit part-time packing and customer-service staff before busy gifting seasons. Send your CV through the <a href="contact.html">contact page</a>.</p></div>
+  </section>
+
+  <section class="wrap section-tight" aria-labelledby="teamTitle">
+    <h2 id="teamTitle">Owners and team</h2>
+    <p class="muted">MOODBOX is owned and run by its founding group members.</p>
+    <div class="team-grid" id="team"></div>
+  </section>
+
+  <section class="wrap section-tight">
+    <div class="byo-band">
+      <div><h2>How a box reaches you</h2><p class="lead">Our website is the shop window. Behind it, an ERP system handles purchasing from suppliers, stock levels and accounting, so the items you see are items we actually have.</p></div>
+      <ol class="steps">
+        <li><div><strong>We buy from suppliers</strong><span>Purchase orders are raised in our ERP when stock runs low.</span></div></li>
+        <li><div><strong>Stock is received and counted</strong><span>Goods receipts update the quantity on hand that the website shows.</span></div></li>
+        <li><div><strong>Your box is packed</strong><span>Items are issued from stock, wrapped and handed to delivery.</span></div></li>
+      </ol>
+    </div>
+  </section>
+</main>
+</body>
+</html>

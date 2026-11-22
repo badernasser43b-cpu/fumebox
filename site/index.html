@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self'; connect-src 'self' https://*.supabase.co wss://*.supabase.co; frame-src https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>MOODBOX — Gift boxes for every mood</title>
+  <meta name="description" content="Themed gift and lifestyle boxes — Focus, Relax, Gaming and Travel — or build your own box. A BIS 2103 demonstration store.">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/vendor/supabase.js" defer></script>
+  <script type="module" src="js/pages/home.js"></script>
+</head>
+<body data-page="home">
+<main>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <h1>A box for <span class="mood-word" id="moodWord">every mood.</span></h1>
+        <p class="lead">Curated gift boxes for studying, unwinding, gaming and travelling. Pick a signature box, or choose every item yourself and watch the price add up as you go.</p>
+        <div class="mood-switch" id="moodSwitch" role="group" aria-label="Choose a mood"></div>
+        <div class="hero-actions">
+          <a class="btn btn-ink" href="builder.html">Build your own box</a>
+          <a class="btn btn-ghost" href="shop.html">Browse all boxes</a>
+        </div>
+      </div>
+      <div class="box-stage" id="heroBox" aria-live="polite">
+        <div class="skeleton" style="min-height:420px"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <div><h2>Signature boxes</h2><p class="muted">Ready-made and gift-wrapped, at 10% less than buying the items separately.</p></div>
+        <a class="btn btn-ghost btn-sm" href="shop.html">View the shop</a>
+      </div>
+      <div class="boxes-grid" id="boxesGrid"><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div></div>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="wrap byo-band">
+      <div>
+        <h2>Build your own box</h2>
+        <p class="lead">Mix items from any mood into one gift. The price updates with every item you add, so there are no surprises at checkout.</p>
+        <a class="btn" href="builder.html">Start building</a>
+      </div>
+      <ol class="steps">
+        <li><div><strong>Choose 3 to 8 items</strong><span>Filter by mood or search. Add up to 3 of any item.</span></div></li>
+        <li><div><strong>Watch the total</strong><span>Item prices plus AED 15 for the gift box and wrapping.</span></div></li>
+        <li><div><strong>Add a gift message</strong><span>We print it on a card inside the lid.</span></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <div><h2>Popular items</h2><p class="muted">Customer favourites you can add to your own box.</p></div>
+        <a class="btn btn-ghost btn-sm" href="shop.html#items">All items</a>
+      </div>
+      <div class="items-grid" id="featuredGrid"></div>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="wrap benefits">
+      <div class="benefit"><strong>Free delivery over AED 200</strong><span>AED 15 delivery anywhere in the UAE below that.</span></div>
+      <div class="benefit"><strong>Gift-ready packaging</strong><span>Every box arrives wrapped with an optional message card.</span></div>
+      <div class="benefit"><strong>7-day returns</strong><span>Unused items in original packaging. <a href="faq.html#returns">Read the policy</a>.</span></div>
+      <div class="benefit"><strong>Real-time stock</strong><span>Items that are sold out can't be added, so your order won't be cancelled later.</span></div>
+    </div>
+  </section>
+</main>
+</body>
+</html>

@@ -1,0 +1,65 @@
+PASS anon can read catalogue
+PASS anon cannot read orders
+PASS anon cannot read order_lines
+PASS anon cannot read order_line_items
+PASS anon cannot read contact_messages
+PASS anon cannot read analytics_events
+PASS anon cannot read admins
+PASS anon cannot insert products
+PASS anon cannot update products
+PASS anon cannot delete products
+PASS anon cannot edit site content
+PASS anon cannot change box contents
+PASS signed-in NON-admin cannot insert products
+PASS signed-in NON-admin update affects 0 rows
+PASS signed-in NON-admin sees 0 orders
+PASS admin can add product
+PASS admin can edit product
+PASS admin can archive product
+PASS archived product hidden from public
+PASS archived product still visible to admin
+PASS admin can delete product
+PASS admin can edit a themed box
+PASS negative price rejected by constraint
+PASS negative stock rejected by constraint
+PASS unsafe image URL rejected by constraint
+PASS signature box order succeeds
+PASS signature price = items × (1 − 10%) × qty, free delivery ≥ 200
+PASS each item in signature box deducted ×2
+PASS custom box price = items + AED 15 wrapping; browser 'price' ignored
+PASS custom box deducts exact chosen quantities
+PASS order stored with box line, gift message and item breakdown
+PASS ordering the last 3 units of an item works
+PASS sold-out item rejected with INSUFFICIENT_STOCK
+PASS failed order deducts nothing (atomic)
+PASS demand for one item is summed across ALL boxes in the order
+PASS out-of-stock item (stock 0) rejected
+PASS box containing an unavailable item cannot be ordered
+PASS duplicate submission returns the same reference
+PASS duplicate submission does not deduct stock twice
+PASS custom box with < 3 items rejected
+PASS custom box with > 8 items rejected
+PASS item quantity 0 rejected
+PASS item quantity > 3 rejected
+PASS box quantity 11 rejected
+PASS negative box quantity rejected
+PASS unknown box rejected
+PASS empty cart rejected
+PASS unknown line type rejected
+PASS invalid email rejected
+PASS invalid phone rejected
+PASS invalid emirate rejected
+PASS short name rejected
+PASS 4 concurrent orders for last 2 units → exactly 1 succeeds, no overselling
+PASS contact form submission stored
+PASS contact form rejects bad email
+PASS malformed analytics event ignored without error
+PASS analytics flood from one session capped at 60/min
+PASS anon cannot run analytics report
+PASS non-admin cannot run analytics report
+PASS admin analytics report returns real totals
+PASS admin can review orders
+PASS admin can update order status
+PASS invalid order status rejected
+
+63/63 database tests passed

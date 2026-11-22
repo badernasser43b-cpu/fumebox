@@ -1,0 +1,53 @@
+PASS box page shows discounted price
+PASS cart badge updates to 2 after adding 2 boxes
+PASS builder: 'Add box to cart' disabled with only 2 items
+PASS builder: running total = items + AED 15 wrapping (65+89+15)
+PASS builder: enabled at 3 items
+PASS builder: quantity + updates total (2×65+89+79+15 = 313)
+PASS builder: out-of-stock item cannot be added
+PASS cart shows signature box ×2 and custom box
+PASS cart total = AED 665.80 with free delivery
+PASS empty checkout shows field errors
+PASS invalid email blocked client-side
+PASS no order created by invalid submissions
+PASS confirmation shows MB- reference
+PASS double-click created exactly ONE order
+PASS stored order total matches cart (665.80, free delivery)
+PASS signature items deducted ×2
+PASS custom box items deducted (candle −2, mat −1, adapter −1)
+PASS cart emptied after order
+PASS sold-out-at-checkout shows a clear error
+PASS …and no order is created
+PASS …and the cart line is flagged
+PASS contact form validates empty fields
+PASS contact message stored
+PASS search filters items
+PASS empty search state shown
+PASS mood filter shows 6 travel items
+PASS admin: wrong password rejected
+PASS admin: signed-in non-admin account is refused
+PASS admin: administrator signs in
+PASS admin: item saved with price, stock and uploaded image
+PASS new item appears in the public shop
+PASS uploaded image is served to customers
+PASS edited price visible to customers after reload (persisted)
+PASS unavailable item shows 'Unavailable' and cannot be added
+PASS archived item hidden from the shop
+PASS admin: item deleted from database
+PASS admin: box discount and contents saved
+PASS customer sees new box price from new contents and 20% discount
+PASS admin: order detail shows item breakdown and gift message
+PASS admin: order status update persisted
+PASS admin: contact message visible
+PASS analytics: sessions counted from real browsing in this test
+PASS analytics: order count matches database
+PASS analytics: CSV export downloads with daily rows
+PASS site content edit appears on About page
+PASS after sign-out, admin data is not shown
+PASS no broken internal links (13 checked)
+PASS mobile: box panel hidden until opened
+PASS mobile: bottom bar opens the box panel
+PASS mobile: menu opens
+PASS no uncaught JavaScript errors during tests
+
+51/51 end-to-end checks passed

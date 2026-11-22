@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 400" width="500" height="400">
+<ellipse cx="250" cy="372" rx="190" ry="20" fill="#000" opacity=".12"/>
+<g transform="translate(80 40) scale(.42)"><path d="M160 80c-56 0-92 40-92 86 0 40 22 72 52 80l12-44c-14-6-22-20-22-36 0-24 22-44 50-44s50 20 50 44c0 16-8 30-22 36l12 44c30-8 52-40 52-80 0-46-36-86-92-86z" fill="#E8A33D"/>
+<path d="M104 128c14-18 34-26 56-26" stroke="#fff" stroke-width="6" fill="none" opacity=".6" stroke-linecap="round"/></g><g transform="translate(180 10) scale(.42)"><rect x="100" y="100" width="120" height="120" rx="20" fill="#fff" stroke="#221C3A" stroke-width="6"/><rect x="100" y="180" width="120" height="40" rx="0" fill="#E8A33D"/>
+<rect x="138" y="70" width="10" height="34" fill="#9AA1AE"/><rect x="172" y="70" width="10" height="34" fill="#9AA1AE"/><rect x="124" y="192" width="22" height="10" rx="3" fill="#221C3A"/><rect x="174" y="192" width="22" height="10" rx="3" fill="#221C3A"/><circle cx="160" cy="140" r="8" fill="#221C3A"/></g><g transform="translate(290 44) scale(.42)"><rect x="80" y="130" width="34" height="116" rx="12" fill="#E8A33D"/><rect x="86" y="112" width="22" height="22" rx="4" fill="#221C3A"/><rect x="122" y="114" width="34" height="132" rx="12" fill="#7FC8F8"/><rect x="128" y="96" width="22" height="22" rx="4" fill="#221C3A"/><rect x="164" y="130" width="34" height="116" rx="12" fill="#F7B7C8"/><rect x="170" y="112" width="22" height="22" rx="4" fill="#221C3A"/><rect x="206" y="114" width="34" height="132" rx="12" fill="#B8F0C9"/><rect x="212" y="96" width="22" height="22" rx="4" fill="#221C3A"/></g>
+<path d="M90 190h320l-22 172a14 14 0 0 1-14 12H126a14 14 0 0 1-14-12z" fill="#fff"/>
+<path d="M90 190h320l-6 46H96z" fill="#221C3A" opacity=".12"/>
+<rect x="232" y="190" width="36" height="184" fill="#221C3A"/>
+<path d="M78 170h344v32H78z" fill="#fff"/><rect x="232" y="170" width="36" height="32" fill="#221C3A"/>
+<path d="M250 170c-30-56-96-46-70 0M250 170c30-56 96-46 70 0" fill="none" stroke="#221C3A" stroke-width="14" stroke-linecap="round"/>
+<rect x="150" y="290" width="64" height="8" rx="4" fill="#221C3A" opacity=".12"/><rect x="286" y="290" width="64" height="8" rx="4" fill="#221C3A" opacity=".12"/>
+</svg>
