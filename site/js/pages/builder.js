@@ -28,7 +28,7 @@ function renderBox() {
   const n = d.items.length;
   const units = d.items.reduce((s, i) => s + i.quantity, 0);
 
-  $('#countText').textContent = `${n} of ${CUSTOM_MAX} items${units > n ? ` · ${units} pieces` : ''}`;
+  $('#countText').textContent = `${n} of ${CUSTOM_MAX} perfumes${units > n ? ` · ${units} bottles` : ''}`;
   $('#meter').style.width = (n / CUSTOM_MAX * 100) + '%';
   const slots = d.items.map((i) => {
     const p = cat.products.get(i.product_id);

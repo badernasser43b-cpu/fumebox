@@ -478,7 +478,7 @@ views.analytics = async () => {
         <div class="card"><h2>Devices</h2>${tbl(rep.devices, [['device', 'Device'], ['sessions', 'Sessions', 1]])}<h2 style="margin-top:1.25rem">Traffic sources</h2>${tbl(rep.referrers, [['source', 'Source'], ['sessions', 'Sessions', 1]])}</div>
       </div>
       <div class="grid-2">
-        <div class="card"><h2>Signature boxes</h2>${tbl(rep.boxes, [['name', 'Box'], ['views', 'Views', 1], ['adds', 'Added to cart', 1], ['units_sold', 'Sold', 1]])}</div>
+        <div class="card"><h2>Gift sets</h2>${tbl(rep.boxes, [['name', 'Gift set'], ['views', 'Views', 1], ['adds', 'Added to cart', 1], ['units_sold', 'Sold', 1]])}</div>
         <div class="card"><h2>Box types ordered</h2>${tbl(rep.order_types.map((x) => ({ ...x, type: x.type === 'custom' ? 'Build-Your-Own' : 'Signature' })), [['type', 'Type'], ['boxes', 'Boxes', 1]])}<h2 style="margin-top:1.25rem">Searches</h2>${tbl(rep.searches, [['term', 'Search term'], ['count', 'Times', 1]])}</div>
       </div>
       <div class="card"><h2>Items</h2>${tbl(rep.items, [['name', 'Item'], ['views', 'Detail views', 1], ['builder_adds', 'Added to a box', 1], ['units_sold', 'Units sold', 1]])}</div>`;

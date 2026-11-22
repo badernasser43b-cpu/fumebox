@@ -6,7 +6,7 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self'; connect-src 'self' https://*.supabase.co wss://*.supabase.co; frame-src https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self'">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>Build your own box — FUMEBOX</title>
-  <meta name="description" content="Choose 3 to 8 perfumes and build your own FUMEBOX gift box. The price updates as you add items.">
+  <meta name="description" content="Choose 3 to 8 perfumes and build your own FUMEBOX gift box. The price updates as you add perfumes.">
   <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/styles.css">
   <script src="js/vendor/supabase.js" defer></script>
@@ -21,9 +21,9 @@
   </div>
   <div class="wrap builder">
     <section aria-labelledby="pickTitle">
-      <h2 id="pickTitle" class="sr">Choose items</h2>
+      <h2 id="pickTitle" class="sr">Choose perfumes</h2>
       <div class="toolbar">
-        <label class="search"><span class="sr">Search items</span>
+        <label class="search"><span class="sr">Search perfumes</span>
           <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
           <input type="search" id="q" placeholder="Search perfumes" autocomplete="off">
         </label>
@@ -35,12 +35,12 @@
     <aside class="builder-panel" id="panel" aria-labelledby="boxTitle">
       <div class="lid">
         <h2 id="boxTitle">Your box</h2>
-        <span id="countText">0 of 8 items</span>
+        <span id="countText">0 of 8 perfumes</span>
         <div class="meter" aria-hidden="true"><span id="meter"></span></div>
       </div>
       <div class="slots" id="slots" aria-live="polite"></div>
       <div class="summary">
-        <div class="line"><span>Items</span><span id="itemsTotal">AED 0</span></div>
+        <div class="line"><span>Perfumes</span><span id="itemsTotal">AED 0</span></div>
         <div class="line"><span>Gift box &amp; wrapping</span><span id="wrapFee">AED 15</span></div>
         <div class="line"><strong>Box total</strong><span class="total" id="boxTotal">AED 0</span></div>
         <div class="field" style="margin:.5rem 0 0">

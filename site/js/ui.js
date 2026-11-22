@@ -82,7 +82,7 @@ export function renderShell() {
         <a class="brand" href="index.html">${LOGO}<span data-setting="store_name">FUMEBOX</span></a>
         <p data-setting="tagline">Gift boxes for every mood</p>
       </div>
-      <div><h2>Shop</h2><a href="shop.html">Signature boxes</a><a href="builder.html">Build your own box</a><a href="cart.html">Cart</a></div>
+      <div><h2>Shop</h2><a href="shop.html">Gift sets</a><a href="shop.html#items">All perfumes</a><a href="builder.html">Build a gift box</a><a href="cart.html">Cart</a></div>
       <div><h2>Company</h2><a href="about.html">About us</a><a href="contact.html">Contact</a><a href="faq.html">FAQ &amp; returns</a></div>
       <div><h2>Get in touch</h2><a data-setting-href="email" data-setting="email" href="#">hello@fumebox.example</a><span data-setting="phone"></span><span data-setting="address"></span></div>
     </div>
