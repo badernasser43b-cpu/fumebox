@@ -1,4 +1,4 @@
-# BLOOMBOX — live deployment report (22 Nov 2026)
+# FUMEBOX — live deployment report (22 Nov 2026)
 
 Hand-off for the BIS 2103 portfolio and presentation. Everything below was
 checked on the **live** site, not the local mock.
@@ -12,7 +12,7 @@ checked on the **live** site, not the local mock.
 | Code (public) | https://github.com/badernasser43b-cpu/bloombox |
 | Database | Supabase project `moodbox` (free plan, Mumbai), organization "MOODBOX BIS 2103" |
 
-The store is branded **BLOOMBOX** (renamed from MOODBOX on 22 Nov 2026; the
+The store is branded **FUMEBOX** (renamed from MOODBOX on 22 Nov 2026; the
 old `…/moodbox/` address no longer works).
 
 ## Architecture

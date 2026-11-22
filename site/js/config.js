@@ -1,4 +1,4 @@
-// BLOOMBOX configuration.
+// FUMEBOX configuration.
 // Replace these two values with your Supabase project's "Project URL" and
 // "anon public" key (Supabase dashboard → Project Settings → API).
 // The anon key is designed to be public: all access is enforced by the

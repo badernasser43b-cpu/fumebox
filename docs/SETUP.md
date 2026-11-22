@@ -1,4 +1,4 @@
-# BLOOMBOX — Go-live setup (about 20 minutes)
+# FUMEBOX — Go-live setup (about 20 minutes)
 
 Everything here is free. No credit card is needed. Steps marked **(you)** need your own accounts and must be done by you; nothing else needs code changes except step 3.
 

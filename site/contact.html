@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self'; connect-src 'self' https://*.supabase.co wss://*.supabase.co; frame-src https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self'">
   <meta name="referrer" content="strict-origin-when-cross-origin">
-  <title>Contact us — BLOOMBOX</title>
-  <meta name="description" content="Contact BLOOMBOX: email, phone, location, opening hours and a message form.">
+  <title>Contact us — FUMEBOX</title>
+  <meta name="description" content="Contact FUMEBOX: email, phone, location, opening hours and a message form.">
   <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/styles.css">
   <script src="js/vendor/supabase.js" defer></script>
@@ -22,14 +22,13 @@
     <section aria-labelledby="infoTitle">
       <h2 id="infoTitle" style="font-size:1.5rem">Our details</h2>
       <ul class="info-list">
-        <li><span class="k">Email</span><a data-setting="email" data-setting-href="email" href="#">hello@bloombox.example</a></li>
+        <li><span class="k">Email</span><a data-setting="email" data-setting-href="email" href="#">hello@fumebox.example</a></li>
         <li><span class="k">Phone</span><span data-setting="phone">+971 00 000 0000</span></li>
         <li><span class="k">Location</span><span data-setting="address">Abu Dhabi, United Arab Emirates</span></li>
         <li><span class="k">Opening hours</span><span data-setting="hours"></span></li>
       </ul>
-      <iframe class="map" id="map" title="Map showing the BLOOMBOX location" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+      <iframe class="map" id="map" title="Map showing the FUMEBOX location" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
         src="https://www.google.com/maps?q=Abu%20Dhabi%2C%20United%20Arab%20Emirates&amp;output=embed"></iframe>
-      <p class="small muted">BLOOMBOX is a student demonstration business. The location shown is for illustration only.</p>
     </section>
 
     <section aria-labelledby="formTitle">
@@ -39,7 +38,7 @@
         <div class="field"><label for="c-name">Your name</label><input id="c-name" name="name" type="text" autocomplete="name" required maxlength="80"><span class="error" id="c-name-err"></span></div>
         <div class="field"><label for="c-email">Email</label><input id="c-email" name="email" type="email" autocomplete="email" required maxlength="120"><span class="error" id="c-email-err"></span></div>
         <div class="field"><label for="c-subject">Subject</label>
-          <select id="c-subject" name="subject" required><option value="">Choose a topic</option><option>Question about a box</option><option>Custom or corporate gifting</option><option>An existing order</option><option>Returns</option><option>Working with BLOOMBOX</option><option>Something else</option></select><span class="error" id="c-subject-err"></span></div>
+          <select id="c-subject" name="subject" required><option value="">Choose a topic</option><option>Question about a box</option><option>Custom or corporate gifting</option><option>An existing order</option><option>Returns</option><option>Working with FUMEBOX</option><option>Something else</option></select><span class="error" id="c-subject-err"></span></div>
         <div class="field"><label for="c-message">Message</label><textarea id="c-message" name="message" required minlength="10" maxlength="2000"></textarea><span class="hint" id="c-count">0 / 2000</span><span class="error" id="c-message-err"></span></div>
         <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
         <button class="btn btn-block" type="submit" id="sendBtn">Send message</button>

@@ -1,94 +1,72 @@
--- BLOOMBOX demonstration catalogue. Runs only on an empty database (re-run safe).
--- Prices are realistic sample retail prices in AED for a demonstration store.
+-- FUMEBOX catalogue: women's and men's perfumes from the world's great fragrance houses.
+-- Runs only on an empty database (re-run safe). Prices are indicative UAE retail prices in AED.
+-- Brand names and trademarks belong to their owners; FUMEBOX is not affiliated with them.
 
 insert into public.collections (slug, name, tagline, description, theme_color, image_url, discount_pct, sort_order)
 select * from (values
-  ('focus',  'Focus',  'Study smarter, stress less',
-   'A curated set of study and productivity essentials for exam season, deadlines and deep-work days.',
-   '#3D5AFE', 'images/photos/boxes/focus.webp', 10.00, 1),
-  ('relax',  'Relax',  'A pause button in a box',
-   'Self-care and comfort pieces for slow evenings, better sleep and a well-deserved reset.',
-   '#A0618F', 'images/photos/boxes/relax.webp', 10.00, 2),
-  ('gaming', 'Gaming', 'Level up your setup',
-   'Desk and comfort upgrades for gamers who care about a clean, comfortable and good-looking setup.',
-   '#10A374', 'images/photos/boxes/gaming.webp', 10.00, 3),
-  ('travel', 'Travel', 'Pack light, travel easy',
-   'Smart travel essentials for weekend trips, long-haul flights and everything in between.',
-   '#E8A33D', 'images/photos/boxes/travel.webp', 10.00, 4)
+  ('women', 'Women''s', 'Three icons for her',
+   'Chanel N°5, Miss Dior and YSL Libre: three of the world''s most-loved women''s fragrances, gift-wrapped together with a message card.',
+   '#B04A72', 'images/perfume/boxes/women.webp', 10.00, 1),
+  ('men',   'Men''s',   'Three icons for him',
+   'Bleu de Chanel, Dior Sauvage and Versace Eros: three best-selling men''s fragrances, gift-wrapped together with a message card.',
+   '#1F3A5F', 'images/perfume/boxes/men.webp', 10.00, 2)
 ) v(slug, name, tagline, description, theme_color, image_url, discount_pct, sort_order)
 where not exists (select 1 from public.collections);
 
 insert into public.products (name, description, price_aed, category, collection_id, stock, image_url, is_featured, sort_order)
 select v.name, v.description, v.price, v.category, c.id, v.stock, v.img, v.featured, v.sort
 from (values
-  -- Focus
-  ('focus','Linen A5 Dotted Journal','160-page lay-flat dotted journal with a linen hard cover and ribbon marker.',45.00,'Stationery',40,'images/photos/items/journal.webp',true,1),
-  ('focus','Matte Gel Pen Trio','Three 0.5 mm quick-dry gel pens in black, navy and graphite.',28.00,'Stationery',60,'images/photos/items/pens.webp',false,2),
-  ('focus','Pomodoro Desk Timer','Silent rotating 5/25/45-minute focus timer with soft alarm.',69.00,'Productivity',22,'images/photos/items/timer.webp',true,3),
-  ('focus','Pastel Highlighter Set (6)','Six chisel-tip pastel highlighters that do not bleed through paper.',22.00,'Stationery',55,'images/photos/items/highlighters.webp',false,4),
-  ('focus','Focus Herbal Tea (20 bags)','Peppermint and rosemary caffeine-free blend for long study sessions.',32.00,'Wellbeing',35,'images/photos/items/tea.webp',false,5),
-  ('focus','Bamboo Phone Stand','Adjustable bamboo stand that keeps your phone upright and out of reach while you work.',35.00,'Productivity',30,'images/photos/items/phone-stand.webp',false,6),
-  -- Relax
-  ('relax','Lavender Soy Candle 200 g','Hand-poured soy wax candle with lavender and vanilla, about 40 hours burn time.',65.00,'Home',28,'images/photos/items/candle.webp',true,1),
-  ('relax','Mulberry Silk Sleep Mask','Soft, breathable 100% mulberry silk mask with adjustable strap.',49.00,'Self-care',25,'images/photos/items/sleep-mask.webp',false,2),
-  ('relax','Himalayan Bath Salt Soak 300 g','Pink Himalayan salt with eucalyptus oil for a calming soak.',42.00,'Self-care',30,'images/photos/items/bath-salt.webp',false,3),
-  ('relax','Chamomile Night Tea Tin','Loose-leaf chamomile and lemon balm tea, about 25 cups.',38.00,'Wellbeing',30,'images/photos/items/tea-tin.webp',false,4),
-  ('relax','Cloud Fleece Socks','Ultra-soft fleece lounge socks with non-slip soles. One size.',29.00,'Comfort',50,'images/photos/items/socks.webp',false,5),
-  ('relax','Ceramic Aroma Diffuser','Ultrasonic ceramic diffuser with warm light and auto shut-off.',119.00,'Home',3,'images/photos/items/diffuser.webp',false,6),
-  -- Gaming
-  ('gaming','XL RGB Desk Mat','90 × 40 cm stitched-edge desk mat with USB-powered RGB border.',89.00,'Desk setup',20,'images/photos/items/desk-mat.webp',true,1),
-  ('gaming','Aluminium Headset Stand','Weighted aluminium stand with cable hook and non-slip base.',59.00,'Desk setup',18,'images/photos/items/headset-stand.webp',false,2),
-  ('gaming','Cable Management Kit','Velcro ties, adhesive clips and a cable sleeve for a clean desk.',35.00,'Desk setup',40,'images/photos/items/cables.webp',false,3),
-  ('gaming','Keyboard Cleaning Kit','Keycap puller, soft brush and cleaning gel for mechanical keyboards.',25.00,'Maintenance',45,'images/photos/items/keycap-kit.webp',false,4),
-  ('gaming','Monitor LED Light Bar','Glare-free USB-C screen light bar with adjustable warmth.',79.00,'Lighting',12,'images/photos/items/light-bar.webp',false,5),
-  ('gaming','Anti-Sweat Gaming Gloves','Breathable fingerless gloves for better grip in long sessions.',39.00,'Comfort',0,'images/photos/items/gloves.webp',false,6),
-  -- Travel
-  ('travel','Packing Cubes Set (4)','Four lightweight compression cubes in different sizes.',89.00,'Organisation',24,'images/photos/items/packing-cubes.webp',true,1),
-  ('travel','Memory-Foam Neck Pillow','Ergonomic neck pillow with washable cover and travel pouch.',69.00,'Comfort',20,'images/photos/items/neck-pillow.webp',false,2),
-  ('travel','Universal Travel Adapter','All-in-one adapter for 150+ countries with 2 USB-A and 1 USB-C port.',79.00,'Electronics',26,'images/photos/items/adapter.webp',false,3),
-  ('travel','Leak-Proof Toiletry Bottles (4)','Four 90 ml silicone squeeze bottles, airport-security friendly.',35.00,'Organisation',40,'images/photos/items/bottles.webp',false,4),
-  ('travel','Passport & Card Wallet','Slim RFID-blocking wallet for passport, cards, boarding pass and SIM.',55.00,'Accessories',30,'images/photos/items/passport-wallet.webp',false,5),
-  ('travel','Compact Power Bank 10,000 mAh','Pocket-size USB-C power bank, flight-approved capacity.',89.00,'Electronics',15,'images/photos/items/powerbank.webp',false,6)
+  -- Women's
+  ('women','Chanel N°5 Eau de Parfum 100 ml','The timeless aldehydic floral from Paris: May rose and jasmine wrapped in soft vanilla and sandalwood.',640.00,'Floral',18,'images/perfume/items/chanel-no5.webp',true,1),
+  ('women','Chanel Coco Mademoiselle Eau de Parfum 100 ml','A fresh, sensual oriental: bright orange and rose over patchouli and white musk.',620.00,'Chypre',20,'images/perfume/items/coco-mademoiselle.webp',true,2),
+  ('women','Chanel Coco Noir Eau de Parfum 100 ml','Grapefruit and rose over patchouli, sandalwood and vanilla. Deep and elegant for evenings.',640.00,'Oriental',9,'images/perfume/items/coco-noir.webp',false,3),
+  ('women','Dior Miss Dior Eau de Parfum 100 ml','A romantic floral bouquet of rose and lily of the valley with a soft musky trail.',575.00,'Floral',16,'images/perfume/items/miss-dior.webp',true,4),
+  ('women','Dior Poison Girl Eau de Toilette 100 ml','Bitter orange and rose over almond, tonka bean and vanilla. Playful and addictive.',460.00,'Gourmand',7,'images/perfume/items/poison-girl.webp',false,5),
+  ('women','Yves Saint Laurent Libre Eau de Parfum 90 ml','Lavender and orange blossom with a warm vanilla and musk base. Bold and free.',560.00,'Floral',14,'images/perfume/items/ysl-libre.webp',true,6),
+  ('women','Yves Saint Laurent Mon Paris Eau de Parfum 90 ml','Strawberry, raspberry and pear over white musk and patchouli. Sweet and radiant.',525.00,'Fruity',11,'images/perfume/items/ysl-mon-paris.webp',false,7),
+  ('women','Versace Crystal Noir Eau de Toilette 90 ml','Ginger, gardenia and coconut over amber and musk. Mysterious and warm.',340.00,'Oriental',4,'images/perfume/items/crystal-noir.webp',false,8),
+  -- Men's
+  ('men','Bleu de Chanel Eau de Parfum 100 ml','A modern woody aromatic: fresh citrus, incense and cedar. Polished from day to night.',625.00,'Woody',15,'images/perfume/items/bleu-de-chanel.webp',true,1),
+  ('men','Dior Sauvage Eau de Toilette 100 ml','Calabrian bergamot and pepper over ambroxan. Fresh, raw and noble.',495.00,'Fresh spicy',22,'images/perfume/items/dior-sauvage.webp',true,2),
+  ('men','Dior Homme Sport Eau de Toilette 125 ml','Sparkling citrus and ginger over elemi and woody notes. Energetic and clean.',455.00,'Citrus',10,'images/perfume/items/dior-homme-sport.webp',false,3),
+  ('men','Yves Saint Laurent Y Eau de Parfum 100 ml','Fresh apple and ginger over sage, amberwood and tonka bean. Confident and modern.',520.00,'Aromatic',12,'images/perfume/items/ysl-y.webp',true,4),
+  ('men','Versace Eros Eau de Toilette 100 ml','Mint, green apple and lemon over tonka bean and vanilla. Bold and seductive.',360.00,'Aromatic',19,'images/perfume/items/versace-eros.webp',false,5),
+  ('men','Versace Dylan Blue Pour Homme Eau de Toilette 100 ml','Bergamot and grapefruit with aquatic notes, incense and musk. Masculine and fresh.',345.00,'Fresh',2,'images/perfume/items/versace-dylan-blue.webp',false,6)
 ) v(slug, name, description, price, category, stock, img, featured, sort)
 join public.collections c on c.slug = v.slug
 where not exists (select 1 from public.products);
 
--- Signature box contents (one of each listed item)
+-- Gift set contents (one of each listed perfume)
 insert into public.collection_items (collection_id, product_id, quantity)
 select c.id, p.id, 1
 from (values
-  ('focus',  'Linen A5 Dotted Journal'), ('focus', 'Matte Gel Pen Trio'), ('focus', 'Pomodoro Desk Timer'),
-  ('focus',  'Pastel Highlighter Set (6)'), ('focus', 'Focus Herbal Tea (20 bags)'),
-  ('relax',  'Lavender Soy Candle 200 g'), ('relax', 'Mulberry Silk Sleep Mask'), ('relax', 'Himalayan Bath Salt Soak 300 g'),
-  ('relax',  'Chamomile Night Tea Tin'), ('relax', 'Cloud Fleece Socks'),
-  ('gaming', 'XL RGB Desk Mat'), ('gaming', 'Aluminium Headset Stand'), ('gaming', 'Cable Management Kit'),
-  ('gaming', 'Keyboard Cleaning Kit'),
-  ('travel', 'Packing Cubes Set (4)'), ('travel', 'Memory-Foam Neck Pillow'), ('travel', 'Universal Travel Adapter'),
-  ('travel', 'Leak-Proof Toiletry Bottles (4)')
+  ('women', 'Chanel N°5 Eau de Parfum 100 ml'), ('women', 'Dior Miss Dior Eau de Parfum 100 ml'), ('women', 'Yves Saint Laurent Libre Eau de Parfum 90 ml'),
+  ('men',   'Bleu de Chanel Eau de Parfum 100 ml'), ('men', 'Dior Sauvage Eau de Toilette 100 ml'), ('men', 'Versace Eros Eau de Toilette 100 ml')
 ) v(slug, item)
 join public.collections c on c.slug = v.slug
 join public.products p on p.name = v.item
 where not exists (select 1 from public.collection_items);
 
+
 -- Editable business content. Every value is a PLACEHOLDER until the group
 -- replaces it in Admin → Site content.
 update public.site_settings set content = jsonb_build_object(
-  'store_name', 'BLOOMBOX',
-  'tagline', 'Gift boxes for every mood',
-  'about', 'BLOOMBOX is a demonstration online store created for the BIS 2103 Business Information Systems course at Higher Colleges of Technology. We sell themed gift and lifestyle boxes — Focus, Relax, Gaming and Travel — and let customers build their own box from individual items.',
-  'mission', 'To make thoughtful gifting effortless by curating useful, good-quality items into boxes that match how people feel and what they need.',
-  'vision', 'To be the UAE''s go-to online destination for personalised, mood-based gift boxes for students and young professionals.',
-  'strategy', 'Differentiation through personalisation: curated signature boxes at a 10% bundle saving, plus a Build-Your-Own option. Mobile-first shopping, free delivery over AED 200, weekly analytics-driven improvements, and ERP-based purchasing and stock control to avoid stock-outs.',
-  'target_customers', 'College students and young professionals in the UAE aged 18–30 who buy gifts for friends and family or treat themselves, shop mostly on their phones, and value personalisation, fair prices and fast delivery.',
-  'management', 'BLOOMBOX is run by a small founding team. Each member owns one business function — operations and inventory, marketing and analytics, website and customer experience, finance and ERP, and customer service — and the team meets weekly to review analytics and agree improvements.',
+  'store_name', 'FUMEBOX',
+  'tagline', 'Perfumes for her and him',
+  'about', 'FUMEBOX brings the world''s most-loved fragrances together in one place. We sell authentic women''s and men''s perfumes from the great perfume houses of Paris, Milan and beyond, ready-made gift sets, and build-your-own perfume gift boxes delivered across the UAE.',
+  'mission', 'To make finding and gifting a great fragrance simple: a curated collection of iconic perfumes, honest prices and gift-ready packaging, all in one place.',
+  'vision', 'To be the UAE''s favourite online destination for discovering and gifting the world''s iconic perfumes.',
+  'strategy', 'Curated selection over endless choice: a focused collection of best-selling women''s and men''s fragrances, signature gift sets at a 10% saving, and a build-your-own gift box. Mobile-first shopping, free delivery over AED 200, weekly analytics-driven improvements, and ERP-based purchasing and stock control to avoid stock-outs.',
+  'target_customers', 'Fragrance lovers and gift buyers in the UAE aged 18 to 35 who shop mostly on their phones, buy perfume for themselves or as gifts for birthdays and occasions, and value authentic brands, fair prices and fast delivery.',
+  'management', 'FUMEBOX is run by a small founding team. Each member owns one business function: buying and inventory, marketing and analytics, website and customer experience, finance and ERP, and customer service. The team meets weekly to review analytics and agree improvements.',
   'team', jsonb_build_array(
-    jsonb_build_object('name', '[Group member 1]', 'role', 'Operations & Inventory Manager'),
+    jsonb_build_object('name', '[Group member 1]', 'role', 'Buying & Inventory Manager'),
     jsonb_build_object('name', '[Group member 2]', 'role', 'Marketing & Analytics Manager'),
     jsonb_build_object('name', '[Group member 3]', 'role', 'Website & Customer Experience Lead'),
     jsonb_build_object('name', '[Group member 4]', 'role', 'Finance & ERP Lead'),
     jsonb_build_object('name', '[Group member 5]', 'role', 'Customer Service Lead')
   ),
-  'email', 'hello@bloombox.example',
+  'email', 'hello@fumebox.example',
   'phone', '+971 00 000 0000',
   'address', 'Demonstration location — Abu Dhabi, United Arab Emirates',
   'map_query', 'Abu Dhabi, United Arab Emirates',

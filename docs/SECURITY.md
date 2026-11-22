@@ -1,4 +1,4 @@
-# BLOOMBOX — Security and privacy fact sheet
+# FUMEBOX — Security and privacy fact sheet
 
 Source material for **Stage 5 (security and ethics)**. Each control is marked as one of three kinds:
 

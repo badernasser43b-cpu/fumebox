@@ -21,12 +21,12 @@ async function init() {
   const show = (slug, animate) => {
     const b = cat.bySlug.get(slug);
     applyMood(document.documentElement, b.theme_color);
-    $('#moodWord').textContent = b.name.toLowerCase() + ' days.';
+    $('#moodWord').textContent = ({ women: 'for her.', men: 'for him.' })[b.slug] || ('for ' + b.name.toLowerCase() + '.');
     sw.querySelectorAll('button').forEach((x) => x.setAttribute('aria-pressed', String(x.dataset.slug === slug)));
     const soldOut = b.maxQty === 0;
     $('#heroBox').innerHTML = `
       <article class="box-card${animate ? ' swap' : ''}">
-        <img class="box-art" src="${esc(b.image_url || 'images/photos/boxes/custom.webp')}" alt="" width="500" height="340">
+        <img class="box-art" src="${esc(b.image_url || 'images/perfume/boxes/custom.webp')}" alt="" width="500" height="340">
         <h2>${esc(b.name)} Box</h2>
         <p class="tag">${esc(b.tagline)}</p>
         <ul class="box-contents" aria-label="What's inside">${b.items.map((it) => `<li>${it.quantity > 1 ? it.quantity + ' × ' : ''}${esc(it.product.name)}</li>`).join('')}</ul>
@@ -47,7 +47,7 @@ async function init() {
 
   $('#boxesGrid').innerHTML = boxes.map((b) => `
     <a class="box-tile" href="box.html?slug=${encodeURIComponent(b.slug)}" style="${moodStyle(b.theme_color)}">
-      <img src="${esc(b.image_url || 'images/photos/boxes/custom.webp')}" alt="" width="300" height="300" loading="lazy">
+      <img src="${esc(b.image_url || 'images/perfume/boxes/custom.webp')}" alt="" width="300" height="300" loading="lazy">
       <div>
         <h3>${esc(b.name)}</h3>
         <p>${esc(b.tagline)}</p>

@@ -18,7 +18,7 @@ async function init() {
     root.innerHTML = `<div class="state"><h2>Box not found</h2><p>This box may have been removed.</p><a class="btn" href="shop.html">See all boxes</a></div>`;
     return;
   }
-  document.title = `${b.name} Box — BLOOMBOX`;
+  document.title = `${b.name} Gift Set — FUMEBOX`;
   applyMood(document.documentElement, b.theme_color);
   track('box_view', { collectionId: b.id });
 
@@ -27,13 +27,13 @@ async function init() {
   const limiting = b.items.filter((it) => !it.product.is_available || it.product.stock < it.quantity);
 
   root.innerHTML = `
-    <nav class="small muted" aria-label="Breadcrumb" style="margin-bottom:1rem"><a href="shop.html">Shop</a> / ${esc(b.name)} Box</nav>
+    <nav class="small muted" aria-label="Breadcrumb" style="margin-bottom:1rem"><a href="shop.html">Shop</a> / ${esc(b.name)} Gift Set</nav>
     <div class="box-detail">
       <div class="box-hero">
-        <img src="${esc(b.image_url || 'images/photos/boxes/custom.webp')}" alt="${esc(b.name)} gift box" width="600" height="480">
+        <img src="${esc(b.image_url || 'images/perfume/boxes/custom.webp')}" alt="${esc(b.name)} gift box" width="600" height="480">
       </div>
       <div>
-        <h1>${esc(b.name)} Box</h1>
+        <h1>${esc(b.name)} Gift Set</h1>
         <p class="lead">${esc(b.tagline)}</p>
         <p>${esc(b.description)}</p>
         <h2 style="font-size:1.35rem;margin-top:1.5rem">What's inside</h2>
@@ -77,7 +77,7 @@ async function init() {
       if (remaining === 0) return;
       addSignature(b.id, qty, b.maxQty);
       track('add_to_cart', { collectionId: b.id });
-      toast(`${qty} × ${b.name} Box added to your cart.`);
+      toast(`${qty} × ${b.name} Gift Set added to your cart.`);
       remaining -= qty; qty = 1; update();
     });
   }

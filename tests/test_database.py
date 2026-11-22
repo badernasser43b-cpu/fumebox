@@ -1,5 +1,5 @@
 """
-Database security & business-logic tests for BLOOMBOX.
+Database security & business-logic tests for FUMEBOX.
 
 Runs the REAL supabase/*.sql files against a local Postgres 16 with Supabase's
 roles (anon / authenticated) and auth.uid() emulated, then exercises them the

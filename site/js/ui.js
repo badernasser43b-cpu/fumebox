@@ -48,9 +48,8 @@ export function renderShell() {
   const header = document.createElement('header');
   header.className = 'site-header';
   header.innerHTML = `
-    <div class="demo-bar">Demonstration store for a college project (BIS 2103). No real payments are taken and no orders are shipped.</div>
     <div class="nav-wrap">
-      <a class="brand" href="index.html" aria-label="BLOOMBOX home">${LOGO}<span data-setting="store_name">BLOOMBOX</span></a>
+      <a class="brand" href="index.html" aria-label="FUMEBOX home">${LOGO}<span data-setting="store_name">FUMEBOX</span></a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav"><span class="sr">Menu</span><span class="bars" aria-hidden="true"></span></button>
       <nav id="site-nav" class="site-nav" aria-label="Main">
         ${NAV.map(([href, label, key]) => `<a href="${href}"${key === page ? ' aria-current="page"' : ''}>${label}</a>`).join('')}
@@ -80,14 +79,14 @@ export function renderShell() {
   footer.innerHTML = `
     <div class="footer-grid">
       <div>
-        <a class="brand" href="index.html">${LOGO}<span data-setting="store_name">BLOOMBOX</span></a>
+        <a class="brand" href="index.html">${LOGO}<span data-setting="store_name">FUMEBOX</span></a>
         <p data-setting="tagline">Gift boxes for every mood</p>
       </div>
       <div><h2>Shop</h2><a href="shop.html">Signature boxes</a><a href="builder.html">Build your own box</a><a href="cart.html">Cart</a></div>
       <div><h2>Company</h2><a href="about.html">About us</a><a href="contact.html">Contact</a><a href="faq.html">FAQ &amp; returns</a></div>
-      <div><h2>Get in touch</h2><a data-setting-href="email" data-setting="email" href="#">hello@bloombox.example</a><span data-setting="phone"></span><span data-setting="address"></span></div>
+      <div><h2>Get in touch</h2><a data-setting-href="email" data-setting="email" href="#">hello@fumebox.example</a><span data-setting="phone"></span><span data-setting="address"></span></div>
     </div>
-    <p class="fine">© <span data-year></span> <span data-setting="store_name">BLOOMBOX</span>. A student demonstration website for BIS 2103, Higher Colleges of Technology. Product names, prices and stock levels are sample data.</p>`;
+    <p class="fine">© <span data-year></span> <span data-setting="store_name">FUMEBOX</span>. Not affiliated with Chanel, Dior, Yves Saint Laurent or Versace. Brand names and trademarks belong to their owners.</p>`;
   document.body.append(footer);
   $('[data-year]', footer).textContent = new Date().getFullYear();
 
@@ -103,7 +102,7 @@ export function renderShell() {
 export function applySettings(s) {
   $$('[data-setting]').forEach((el) => { const v = s[el.dataset.setting]; if (typeof v === 'string' && v) el.textContent = v; });
   $$('[data-setting-href="email"]').forEach((el) => { if (s.email) el.href = 'mailto:' + s.email; });
-  if (s.store_name) document.title = document.title.replace(/BLOOMBOX/g, s.store_name);
+  if (s.store_name) document.title = document.title.replace(/FUMEBOX/g, s.store_name);
   window.dispatchEvent(new CustomEvent('settings:ready', { detail: s }));
 }
 

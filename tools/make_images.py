@@ -1,4 +1,4 @@
-"""Generates BLOOMBOX's illustrative product and box artwork as SVG files.
+"""Generates FUMEBOX's illustrative product and box artwork as SVG files.
 These are original placeholder illustrations; admins can replace any of them by
 uploading a real product photo in the dashboard."""
 from pathlib import Path

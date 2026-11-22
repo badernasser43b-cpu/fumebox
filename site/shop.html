@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self'; connect-src 'self' https://*.supabase.co wss://*.supabase.co; frame-src https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self'">
   <meta name="referrer" content="strict-origin-when-cross-origin">
-  <title>Shop boxes and items — BLOOMBOX</title>
-  <meta name="description" content="Shop BLOOMBOX signature gift boxes and individual items for your own custom box.">
+  <title>Shop perfumes and gift sets — FUMEBOX</title>
+  <meta name="description" content="Shop women's and men's perfumes and FUMEBOX gift sets.">
   <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/styles.css">
   <script src="js/vendor/supabase.js" defer></script>
@@ -16,7 +16,7 @@
 <main>
   <div class="wrap page-head">
     <h1>Shop</h1>
-    <p class="lead">Start with a signature box, or browse every item and put together a box of your own.</p>
+    <p class="lead">Start with a gift set, or browse every perfume and put together a gift box of your own.</p>
   </div>
 
   <section class="wrap section-tight" aria-labelledby="boxesTitle">
@@ -26,19 +26,19 @@
 
   <section class="wrap section-tight" id="items" aria-labelledby="itemsTitle">
     <div class="section-head">
-      <div><h2 id="itemsTitle">All items</h2><p class="muted">Add any 3 to 8 items to your own box. <a href="builder.html">Open the box builder</a></p></div>
+      <div><h2 id="itemsTitle">All perfumes</h2><p class="muted">Add any 3 to 8 perfumes to your own gift box. <a href="builder.html">Open the box builder</a></p></div>
     </div>
     <div class="toolbar">
       <label class="search"><span class="sr">Search items</span>
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-        <input type="search" id="q" placeholder="Search items, e.g. candle" autocomplete="off">
+        <input type="search" id="q" placeholder="Search perfumes, e.g. Chanel" autocomplete="off">
       </label>
       <label><span class="sr">Category</span><select id="category"><option value="">All categories</option></select></label>
       <label><span class="sr">Sort</span><select id="sort">
         <option value="featured">Featured first</option><option value="price-asc">Price: low to high</option>
         <option value="price-desc">Price: high to low</option><option value="name">Name A–Z</option></select></label>
     </div>
-    <div class="chip-row" id="moodChips" role="group" aria-label="Filter by mood" style="margin-bottom:1rem"></div>
+    <div class="chip-row" id="moodChips" role="group" aria-label="Filter by section" style="margin-bottom:1rem"></div>
     <p class="result-count" id="count" aria-live="polite"></p>
     <div class="items-grid" id="itemsGrid"></div>
   </section>

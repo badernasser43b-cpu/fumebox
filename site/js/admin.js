@@ -1,4 +1,4 @@
-// BLOOMBOX admin dashboard. Every read/write here is authorised by the database
+// FUMEBOX admin dashboard. Every read/write here is authorised by the database
 // (Row Level Security + is_admin()); hiding UI is a convenience, not the security boundary.
 import { sb, isConfigured } from './api.js';
 import { esc, aed, $, $$, toast, moodStyle } from './ui.js';
@@ -176,7 +176,7 @@ views.items = async () => {
   $('#fm').addEventListener('change', (e) => { state.mood = e.target.value; render(); });
   $('#fa').addEventListener('change', (e) => { state.showArchived = e.target.checked; render(); });
   $('#addItem').addEventListener('click', () => itemEditor(null));
-  $('#exportItems').addEventListener('click', () => download('bloombox-items.csv', [['id', 'name', 'box', 'category', 'price_aed', 'stock', 'available', 'archived'],
+  $('#exportItems').addEventListener('click', () => download('fumebox-items.csv', [['id', 'name', 'box', 'category', 'price_aed', 'stock', 'available', 'archived'],
     ...data.products.map((p) => [p.id, p.name, colName(p.collection_id), p.category, p.price_aed, p.stock, p.is_available, p.is_archived])]));
   $('#rows').addEventListener('click', async (e) => {
     const ed = e.target.closest('[data-edit]'), ar = e.target.closest('[data-arch]'), de = e.target.closest('[data-del]');
@@ -310,7 +310,7 @@ function boxEditor(c) {
         <div class="field"><label for="b-sort">Display order</label><input id="b-sort" name="sort_order" type="number" step="1" value="${c?.sort_order ?? data.collections.length + 1}"></div>
         <div class="field" style="align-content:center"><label class="check"><input type="checkbox" name="is_active" ${c ? (c.is_active ? 'checked' : '') : 'checked'}> Show in store</label></div>
         <div class="field full"><label for="b-file">Box image</label>
-          <div style="display:flex;gap:1rem;align-items:center"><img class="img-preview" id="b-prev" src="${esc(c?.image_url || 'images/photos/boxes/custom.webp')}" alt="">
+          <div style="display:flex;gap:1rem;align-items:center"><img class="img-preview" id="b-prev" src="${esc(c?.image_url || 'images/perfume/boxes/custom.webp')}" alt="">
           <div style="flex:1;display:grid;gap:.5rem"><input id="b-file" type="file" accept="image/jpeg,image/png,image/webp"><input id="b-url" name="image_url" type="text" placeholder="…or an image URL starting with https://" value="${esc(c?.image_url || '')}"></div></div></div>
       </div>
       <h3 style="font-family:var(--body);font-size:1.1rem;margin-top:.5rem">Contents</h3>
@@ -367,7 +367,7 @@ views.orders = async () => {
   const state = { status: '' };
   view.innerHTML = `
     <div class="admin-head"><h1>Orders</h1><button class="btn btn-ghost btn-sm" type="button" id="exportOrders">Export CSV</button></div>
-    <p class="muted">All orders are demonstration orders: no payment was taken. Customer details are visible only to administrators.</p>
+    <p class="muted">No payment is taken online for these orders. Customer details are visible only to administrators.</p>
     <div class="filters"><select id="fs" aria-label="Filter by status"><option value="">All statuses</option><option>new</option><option>processing</option><option>fulfilled</option><option>cancelled</option></select></div>
     <div class="table-wrap"><table class="data"><thead><tr><th>Reference</th><th>Date (UAE)</th><th>Customer</th><th>Emirate</th><th class="num">Total</th><th>Status</th><th></th></tr></thead><tbody id="orows"></tbody></table></div>`;
   let orders = [];
@@ -394,7 +394,7 @@ views.orders = async () => {
     try { must(await sb.from('orders').update({ status: s.value }).eq('id', s.dataset.status).select()); toast(`Order marked ${s.value}.`); refreshBadges(); }
     catch (err) { toast(friendly(err), 'error'); }
   });
-  $('#exportOrders').addEventListener('click', () => download('bloombox-orders.csv', [['reference', 'created_at_utc', 'status', 'emirate', 'box', 'type', 'box_qty', 'item', 'item_units', 'item_unit_price_aed', 'order_subtotal_aed', 'order_delivery_aed', 'order_total_aed'],
+  $('#exportOrders').addEventListener('click', () => download('fumebox-orders.csv', [['reference', 'created_at_utc', 'status', 'emirate', 'box', 'type', 'box_qty', 'item', 'item_units', 'item_unit_price_aed', 'order_subtotal_aed', 'order_delivery_aed', 'order_total_aed'],
     ...orders.flatMap((o) => o.order_lines.flatMap((l) => l.order_line_items.map((i) => [o.reference, o.created_at, o.status, o.emirate, l.title, l.line_type, l.quantity, i.product_name, i.qty_total, i.unit_price_aed, o.subtotal_aed, o.delivery_aed, o.total_aed])))]));
 };
 
@@ -487,8 +487,8 @@ views.analytics = async () => {
   $('#csv').addEventListener('click', () => {
     if (!rep) return toast('Run a report first.', 'error');
     const t = rep.totals;
-    download(`bloombox-analytics-${$('#from').value}-to-${$('#to').value}.csv`, [
-      ['BLOOMBOX analytics export', `${$('#from').value} to ${$('#to').value} (UAE)`], [],
+    download(`fumebox-analytics-${$('#from').value}-to-${$('#to').value}.csv`, [
+      ['FUMEBOX analytics export', `${$('#from').value} to ${$('#to').value} (UAE)`], [],
       ['Metric', 'Value'], ...Object.entries(t), [],
       ['Day', 'Sessions', 'Page views', 'Add to cart', 'Orders', 'Revenue AED'], ...rep.daily.map((d) => [d.day, d.sessions, d.page_views, d.add_to_cart, d.orders, d.revenue_aed]), [],
       ['Page', 'Views'], ...rep.pages.map((p) => [p.page, p.views]), [],

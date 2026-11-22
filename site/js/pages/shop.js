@@ -14,7 +14,7 @@ async function init() {
 
   $('#boxesGrid').innerHTML = cat.collections.map((b) => `
     <a class="box-tile" href="box.html?slug=${encodeURIComponent(b.slug)}" style="${moodStyle(b.theme_color)}">
-      <img src="${esc(b.image_url || 'images/photos/boxes/custom.webp')}" alt="" width="300" height="300" loading="lazy">
+      <img src="${esc(b.image_url || 'images/perfume/boxes/custom.webp')}" alt="" width="300" height="300" loading="lazy">
       <div>
         <h3>${esc(b.name)} Box</h3>
         <p>${esc(b.tagline)}</p>
@@ -25,7 +25,7 @@ async function init() {
   const params = new URLSearchParams(location.search);
   state.mood = params.get('mood') || '';
 
-  $('#moodChips').innerHTML = [['', 'All moods', '#5B3FD9'], ...cat.collections.map((b) => [b.slug, b.name, b.theme_color])]
+  $('#moodChips').innerHTML = [['', 'All', '#5B3FD9'], ...cat.collections.map((b) => [b.slug, b.name, b.theme_color])]
     .map(([slug, name, c]) => `<button class="chip" type="button" data-mood="${esc(slug)}" aria-pressed="${state.mood === slug}" style="${moodStyle(c)}">${slug ? '<span class="dot"></span>' : ''}${esc(name)}</button>`).join('');
   const cats = [...new Set(cat.productList.map((p) => p.category))].sort();
   $('#category').insertAdjacentHTML('beforeend', cats.map((c) => `<option>${esc(c)}</option>`).join(''));

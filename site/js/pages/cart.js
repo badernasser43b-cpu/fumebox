@@ -24,9 +24,9 @@ function lineHtml(x) {
     const b = x.box;
     const max = Math.min(BOX_MAX, b?.maxQty || 0);
     return `<article class="cart-line" style="${moodStyle(b?.theme_color || '#5B3FD9')}">
-      <div class="thumb"><img src="${esc(b?.image_url || 'images/photos/boxes/custom.webp')}" alt=""></div>
+      <div class="thumb"><img src="${esc(b?.image_url || 'images/perfume/boxes/custom.webp')}" alt=""></div>
       <div>
-        <h3>${esc(b ? b.name + ' Box' : 'Box no longer available')}</h3>
+        <h3>${esc(b ? b.name + ' Gift Set' : 'Gift set no longer available')}</h3>
         ${b ? `<ul>${b.items.map((it) => `<li>${it.quantity > 1 ? it.quantity + ' × ' : ''}${esc(it.product.name)}</li>`).join('')}</ul>` : ''}
         <label class="gift-input small"><span class="sr">Gift message</span><input type="text" maxlength="200" data-gift="${l.id}" value="${esc(l.gift_message || '')}" placeholder="Add a gift message (optional)"></label>
         ${x.problem ? `<p class="problem" role="alert">${esc(x.problem)}</p>` : ''}
@@ -39,7 +39,7 @@ function lineHtml(x) {
     </article>`;
   }
   return `<article class="cart-line">
-    <div class="thumb"><img src="images/photos/boxes/custom.webp" alt=""></div>
+    <div class="thumb"><img src="images/perfume/boxes/custom.webp" alt=""></div>
     <div>
       <h3>Build-Your-Own Box</h3>
       <ul>${x.items.map((it) => `<li>${it.quantity > 1 ? it.quantity + ' × ' : ''}${esc(it.product?.name || 'Removed item')}${it.product ? ' — ' + aed(it.product.price_aed * it.quantity) : ''}</li>`).join('')}<li>Gift box &amp; wrapping — ${aed(15)}</li></ul>
@@ -101,7 +101,7 @@ function validate(form, only) {
   }
   if (!only) {
     const ack = form.elements.ack.checked;
-    $('#ack-err').textContent = ack ? '' : 'Tick this box to confirm you understand this is a demonstration.';
+    $('#ack-err').textContent = ack ? '' : 'Please confirm your details and accept the returns policy.';
     if (!ack) ok = false;
   }
   return ok;
@@ -133,7 +133,7 @@ function bindForm() {
     } catch (err) {
       $('#formError').hidden = false;
       $('#formError').textContent = err.message;
-      btn.disabled = false; btn.textContent = 'Place demonstration order';
+      btn.disabled = false; btn.textContent = 'Place order';
       // Stock may have changed: refresh the catalogue and re-check the cart
       try { cat = await refreshCatalog(); render(); $('#formError').hidden = false; $('#formError').textContent = err.message; } catch {}
     } finally { submitting = false; }
@@ -146,17 +146,17 @@ function showConfirmation(res, lines, f) {
   root.innerHTML = `<section class="confirm" aria-labelledby="okTitle">
     <div class="confirm-tick" aria-hidden="true"><svg width="36" height="36" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
     <h1 id="okTitle" tabindex="-1" style="font-size:clamp(2rem,5vw,3rem)">Order received</h1>
-    <p class="lead" style="margin-inline:auto">Thank you, ${esc(f.name.trim().split(' ')[0])}. Your demonstration order has been recorded.</p>
+    <p class="lead" style="margin-inline:auto">Thank you, ${esc(f.name.trim().split(' ')[0])}. Your order has been received.</p>
     <p class="muted" style="margin:1.5rem auto 0">Your order reference</p>
     <div class="ref" data-ref>${esc(res.reference)}</div>
     <div class="panel" style="text-align:left">
-      <ul style="margin:0 0 1rem;padding-left:1.1rem">${t.priced.map((x) => `<li>${x.line.type === 'signature' ? `${x.line.quantity} × ${esc(x.box?.name)} Box` : 'Build-Your-Own Box'} — ${aed(x.total)}</li>`).join('')}</ul>
+      <ul style="margin:0 0 1rem;padding-left:1.1rem">${t.priced.map((x) => `<li>${x.line.type === 'signature' ? `${x.line.quantity} × ${esc(x.box?.name)} Gift Set` : 'Build-Your-Own Box'} — ${aed(x.total)}</li>`).join('')}</ul>
       <div class="totals" style="margin:0">
         <div><span>Subtotal</span><span>${aed(res.subtotal_aed)}</span></div>
         <div><span>Delivery</span><span>${Number(res.delivery_aed) ? aed(res.delivery_aed) : 'Free'}</span></div>
         <div class="grand"><span>Total</span><span>${aed(res.total_aed)}</span></div>
       </div>
-      <p class="small muted" style="margin:1rem 0 0">This is a college demonstration: no payment was taken and nothing will be shipped. Keep the reference to discuss the order with the store team.</p>
+      <p class="small muted" style="margin:1rem 0 0">Keep your order reference for any questions about your order.</p>
     </div>
     <div class="hero-actions" style="justify-content:center;margin-top:1.5rem"><a class="btn" href="shop.html">Continue shopping</a></div>
   </section>`;

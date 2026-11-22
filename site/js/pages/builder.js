@@ -76,9 +76,9 @@ async function init() {
   catch { showError($('#itemsGrid'), 'Items could not be loaded. Check your connection and try again.', init); return; }
 
   const from = cat.bySlug.get(new URLSearchParams(location.search).get('from'));
-  if (from) { const n = $('#fromNotice'); n.hidden = false; n.textContent = `We've started your box with the ${from.name} Box items. Swap, add or remove anything you like.`; }
+  if (from) { const n = $('#fromNotice'); n.hidden = false; n.textContent = `We've started your box with the ${from.name} Gift Set perfumes. Swap, add or remove anything you like.`; }
 
-  $('#moodChips').innerHTML = [['', 'All moods', '#5B3FD9'], ...cat.collections.map((b) => [b.slug, b.name, b.theme_color])]
+  $('#moodChips').innerHTML = [['', 'All', '#5B3FD9'], ...cat.collections.map((b) => [b.slug, b.name, b.theme_color])]
     .map(([slug, name, c]) => `<button class="chip" type="button" data-mood="${esc(slug)}" aria-pressed="${slug === ''}" style="${moodStyle(c)}">${slug ? '<span class="dot"></span>' : ''}${esc(name)}</button>`).join('');
   $('#moodChips').addEventListener('click', (e) => {
     const c = e.target.closest('.chip'); if (!c) return;

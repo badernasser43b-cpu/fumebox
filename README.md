@@ -1,4 +1,4 @@
-# BLOOMBOX — BIS 2103 e-commerce demonstration
+# FUMEBOX — BIS 2103 e-commerce demonstration
 
 Themed gift and lifestyle boxes (Focus, Relax, Gaming, Travel) plus a **Build-Your-Own Box** where customers choose 3–8 items and watch the price update. Built for the BIS 2103 Portfolio (HCT, Fall 202610). **Demonstration only: no payments are taken and nothing is shipped.**
 

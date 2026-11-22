@@ -1,7 +1,7 @@
 {
   "name": "moodbox",
   "version": "1.0.0",
-  "description": "BLOOMBOX \u2014 BIS 2103 e-commerce demonstration (static site + Supabase)",
+  "description": "FUMEBOX \u2014 BIS 2103 e-commerce demonstration (static site + Supabase)",
   "directories": {
     "test": "tests"
   },

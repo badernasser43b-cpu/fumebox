@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self'; connect-src 'self' https://*.supabase.co wss://*.supabase.co; frame-src https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self'">
   <meta name="referrer" content="strict-origin-when-cross-origin">
-  <title>Cart and checkout — BLOOMBOX</title>
+  <title>Cart and checkout — FUMEBOX</title>
   <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/styles.css">
   <script src="js/vendor/supabase.js" defer></script>
@@ -22,7 +22,7 @@
     <form class="panel" id="checkout" novalidate aria-labelledby="coTitle">
       <h2 id="coTitle">Checkout</h2>
       <div class="totals" id="totals"></div>
-      <p class="notice notice-warn small"><strong>Demonstration only.</strong> Submitting this form records a sample order for our college project. No payment is taken, nothing is charged and nothing will be delivered. Please use test details, not real personal information.</p>
+      
       <div id="formError" class="form-error" role="alert" hidden></div>
       <div class="form-grid">
         <div class="field full"><label for="name">Full name</label><input id="name" name="name" type="text" autocomplete="name" required minlength="2" maxlength="80"><span class="error" id="name-err"></span></div>
@@ -33,9 +33,10 @@
           <select id="emirate" name="emirate" required><option value="">Choose an emirate</option><option>Abu Dhabi</option><option>Dubai</option><option>Sharjah</option><option>Ajman</option><option>Umm Al Quwain</option><option>Ras Al Khaimah</option><option>Fujairah</option></select><span class="error" id="emirate-err"></span></div>
         <div class="field full"><label for="notes">Delivery notes <span class="muted small">(optional)</span></label><textarea id="notes" name="notes" maxlength="500" rows="3" placeholder="Landmark, preferred time…"></textarea></div>
       </div>
-      <label class="small" style="display:flex;gap:.5rem;align-items:start;margin-bottom:1rem"><input type="checkbox" id="ack" required style="margin-top:.3rem"> <span>I understand this is a demonstration order and no real purchase is made.</span></label>
+      <label class="small" style="display:flex;gap:.5rem;align-items:start;margin-bottom:1rem"><input type="checkbox" id="ack" required style="margin-top:.3rem"> <span>I confirm my details are correct and accept the <a href="faq.html#returns">returns policy</a>.</span></label>
       <span class="error small" id="ack-err" style="color:var(--danger);display:block;margin:-.5rem 0 1rem"></span>
-      <button class="btn btn-block" type="submit" id="placeBtn">Place demonstration order</button>
+      <button class="btn btn-block" type="submit" id="placeBtn">Place order</button>
+      <p class="small muted" style="margin:.75rem 0 0;text-align:center">No payment is taken online, and orders from this website are not shipped.</p>
       <p class="small muted" style="margin-top:.75rem">By placing an order you agree to our <a href="faq.html#returns">returns policy</a>. Your details are visible only to the store administrators.</p>
     </form>
   </template>
