@@ -7,9 +7,9 @@ checked on the **live** site, not the local mock.
 
 | What | Where |
 |---|---|
-| Public store | https://badernasser43b-cpu.github.io/bloombox/ |
-| Admin dashboard | https://badernasser43b-cpu.github.io/bloombox/admin.html |
-| Code (public) | https://github.com/badernasser43b-cpu/bloombox |
+| Public store | https://badernasser43b-cpu.github.io/fumebox/ |
+| Admin dashboard | https://badernasser43b-cpu.github.io/fumebox/admin.html |
+| Code (public) | https://github.com/badernasser43b-cpu/fumebox |
 | Database | Supabase project `moodbox` (free plan, Mumbai), organization "MOODBOX BIS 2103" |
 
 The store is branded **FUMEBOX** (renamed from MOODBOX on 22 Nov 2026; the

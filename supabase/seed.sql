@@ -68,7 +68,7 @@ update public.site_settings set content = jsonb_build_object(
   ),
   'email', 'hello@fumebox.example',
   'phone', '+971 00 000 0000',
-  'address', 'Demonstration location — Abu Dhabi, United Arab Emirates',
+  'address', 'Abu Dhabi, United Arab Emirates',
   'map_query', 'Abu Dhabi, United Arab Emirates',
   'hours', 'Sun–Thu 9:00–18:00 · Fri 9:00–12:00 · Sat closed'
 )

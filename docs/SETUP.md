@@ -46,11 +46,11 @@ Each should finish with "Success. No rows returned".
 
 ## 5. Publish the website on GitHub Pages (you)
 
-1. Create a **new public repository** on GitHub, for example `bloombox`. Keep it separate from any October AI repositories. (GitHub Pages is free for public repositories.)
+1. Create a **new public repository** on GitHub, for example `fumebox`. Keep it separate from any October AI repositories. (GitHub Pages is free for public repositories.)
 2. Push this whole project folder to the `main` branch.
 3. In the repository: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
 4. Open **Actions**: the "Deploy website to GitHub Pages" workflow publishes the `site/` folder. It also refuses to publish if a secret Supabase key is ever pasted into the site.
-5. After about a minute the site is live at `https://<your-username>.github.io/bloombox/`. This is the link for the instructor.
+5. After about a minute the site is live at `https://<your-username>.github.io/fumebox/`. This is the link for the instructor.
 6. In Supabase **Authentication → URL Configuration**, set **Site URL** to that address.
 
 ## 6. Keep the free database awake until grading (you)
