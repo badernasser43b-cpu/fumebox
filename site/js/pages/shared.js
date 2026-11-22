@@ -22,7 +22,7 @@ export function itemCard(p, cat) {
         <h3><button type="button" data-detail="${p.id}">${esc(p.name)}</button></h3>
         <div class="row">
           <span class="price">${aed(p.price_aed)}</span>
-          <button class="btn btn-sm" type="button" data-addbox="${p.id}" ${can ? '' : 'disabled'}>${can ? 'Add to box' : 'Sold out'}</button>
+          <button class="btn btn-sm" type="button" data-addbox="${p.id}" ${can ? '' : 'disabled'}>${can ? 'Add to gift box' : 'Sold out'}</button>
         </div>
       </div>
     </article>`;
@@ -32,15 +32,15 @@ export function itemCard(p, cat) {
 export function addToDraft(p) {
   const r = draftAdd(p.id, p.is_available ? p.stock : 0);
   if (!r.ok) {
-    const msg = { box_full: `Your box is full — ${CUSTOM_MAX} different items is the maximum.`,
-                  item_max: `You can add up to ${ITEM_MAX} of the same item.`,
+    const msg = { box_full: `Your box is full — ${CUSTOM_MAX} different perfumes is the maximum.`,
+                  item_max: `You can add up to ${ITEM_MAX} of the same perfume.`,
                   stock: `No more ${p.name} in stock.` }[r.reason];
     toast(msg, 'error');
     return false;
   }
   track('builder_add_item', { productId: p.id });
   const d = getDraft();
-  toast(`${p.name} added to your box (${d.items.length} of ${CUSTOM_MAX} items).`);
+  toast(`${p.name} added to your box (${d.items.length} of ${CUSTOM_MAX} perfumes).`);
   return true;
 }
 
@@ -64,7 +64,7 @@ export function openItem(p, cat, onAdd) {
         <h2 id="itemTitle" style="font-size:2rem">${esc(p.name)}</h2>
         <p class="muted">${esc(p.description)}</p>
         <p class="price" style="font-size:1.6rem">${aed(p.price_aed)}</p>
-        <button class="btn" type="button" data-add ${can ? '' : 'disabled'}>${can ? 'Add to my box' : 'Not available right now'}</button>
+        <button class="btn" type="button" data-add ${can ? '' : 'disabled'}>${can ? 'Add to my gift box' : 'Not available right now'}</button>
         ${box && box.items.some((it) => it.product.id === p.id) ? `<p class="small muted">Also included in the <a href="box.html?slug=${encodeURIComponent(box.slug)}">${esc(box.name)} signature box</a>.</p>` : ''}
         <p class="small muted">Items are sold inside a Build-Your-Own box (3–8 items, plus AED 15 gift box and wrapping).</p>
       </div>

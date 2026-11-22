@@ -130,7 +130,7 @@ views.overview = async () => {
       <div class="kpi"><div class="v">${week.length}</div><div class="k">Orders, last 7 days</div></div>
       <div class="kpi"><div class="v">${aed(week.reduce((s, o) => s + Number(o.total_aed), 0))}</div><div class="k">Demo revenue, last 7 days</div></div>
       <div class="kpi"><div class="v">${active.length}</div><div class="k">Active items</div></div>
-      <div class="kpi"><div class="v">${data.collections.filter((c) => c.is_active).length}</div><div class="k">Active themed boxes</div></div>
+      <div class="kpi"><div class="v">${data.collections.filter((c) => c.is_active).length}</div><div class="k">Active gift sets</div></div>
       <div class="kpi"><div class="v" style="color:${low.length ? 'var(--danger)' : 'inherit'}">${low.length}</div><div class="k">Items with 5 or fewer in stock</div></div>
     </div>
     <div class="grid-2">
@@ -148,7 +148,7 @@ views.items = async () => {
     <div class="admin-head"><h1>Items &amp; stock</h1><div class="actions"><button class="btn btn-ghost btn-sm" id="exportItems" type="button">Export CSV</button><button class="btn btn-sm" type="button" id="addItem">Add item</button></div></div>
     <div class="filters">
       <input type="search" id="fq" placeholder="Search items" aria-label="Search items">
-      <select id="fm" aria-label="Filter by box"><option value="">All boxes</option>${data.collections.map((c) => `<option value="${c.id}">${esc(c.name)}</option>`).join('')}<option value="none">No box</option></select>
+      <select id="fm" aria-label="Filter by gift set"><option value="">All gift sets</option>${data.collections.map((c) => `<option value="${c.id}">${esc(c.name)}</option>`).join('')}<option value="none">No gift set</option></select>
       <label class="check"><input type="checkbox" id="fa"> Show archived</label>
     </div>
     <div class="table-wrap"><table class="data"><thead><tr><th></th><th>Item</th><th>Box</th><th>Category</th><th class="num">Price</th><th class="num">Stock</th><th>Status</th><th class="num">Actions</th></tr></thead><tbody id="rows"></tbody></table></div>`;
@@ -210,7 +210,7 @@ function itemEditor(p) {
         <div class="field"><label for="i-price">Price (AED)</label><input id="i-price" name="price_aed" type="number" min="0.01" max="99999" step="0.01" required value="${p ? p.price_aed : ''}"></div>
         <div class="field"><label for="i-stock">Stock on hand</label><input id="i-stock" name="stock" type="number" min="0" max="100000" step="1" required value="${p ? p.stock : 0}"><span class="hint">Units you physically have (match your ERP).</span></div>
         <div class="field"><label for="i-cat">Category</label><input id="i-cat" name="category" type="text" list="catList" required maxlength="40" value="${esc(p?.category || '')}"><datalist id="catList">${cats.map((c) => `<option value="${esc(c)}">`).join('')}</datalist></div>
-        <div class="field"><label for="i-col">Mood / box</label><select id="i-col" name="collection_id"><option value="">No box</option>${data.collections.map((c) => `<option value="${c.id}" ${p?.collection_id === c.id ? 'selected' : ''}>${esc(c.name)}</option>`).join('')}</select></div>
+        <div class="field"><label for="i-col">Mood / box</label><select id="i-col" name="collection_id"><option value="">No gift set</option>${data.collections.map((c) => `<option value="${c.id}" ${p?.collection_id === c.id ? 'selected' : ''}>${esc(c.name)}</option>`).join('')}</select></div>
         <div class="field full"><label for="i-file">Image</label>
           <div style="display:flex;gap:1rem;align-items:center"><img class="img-preview" id="i-prev" src="${esc(p?.image_url || 'images/items/placeholder.svg')}" alt="">
           <div style="flex:1;display:grid;gap:.5rem"><input id="i-file" type="file" accept="image/jpeg,image/png,image/webp"><input id="i-url" name="image_url" type="text" placeholder="…or an image URL starting with https://" value="${esc(p?.image_url || '')}"></div></div>
@@ -258,7 +258,7 @@ function itemEditor(p) {
   $('#i-name').focus();
 }
 
-// ---------- Themed boxes ----------
+// ---------- Gift sets ----------
 views.boxes = async () => {
   await loadCatalogAdmin();
   const price = (c) => {
@@ -271,7 +271,7 @@ views.boxes = async () => {
     return Math.min(...ls.map((l) => { const p = data.products.find((x) => x.id === l.product_id); return !p || p.is_archived || !p.is_available ? 0 : Math.floor(p.stock / l.quantity); }));
   };
   view.innerHTML = `
-    <div class="admin-head"><h1>Themed boxes</h1><button class="btn btn-sm" type="button" id="addBox">Add box</button></div>
+    <div class="admin-head"><h1>Gift sets</h1><button class="btn btn-sm" type="button" id="addBox">Add gift set</button></div>
     <p class="muted">A box's price is calculated from its items' prices minus the box discount. Stock is not stored per box: each sale deducts its individual items.</p>
     <div class="table-wrap"><table class="data"><thead><tr><th>Box</th><th>Contents</th><th class="num">Items value</th><th class="num">Discount</th><th class="num">Box price</th><th class="num">Can make</th><th>Status</th><th class="num">Actions</th></tr></thead>
     <tbody>${data.collections.map((c) => { const pr = price(c), mk = canMake(c); return `
@@ -287,7 +287,7 @@ views.boxes = async () => {
     if (ed) boxEditor(data.collections.find((c) => c.id === Number(ed.dataset.edit)));
     if (de) {
       const c = data.collections.find((x) => x.id === Number(de.dataset.del));
-      if (!await confirmAction(`Delete the ${c.name} box?`, 'The box and its contents list are removed. The individual items stay in the store. To hide it temporarily, edit it and untick "Show in store".', 'Delete box')) return;
+      if (!await confirmAction(`Delete the ${c.name} box?`, 'The box and its contents list are removed. The individual items stay in the store. To hide it temporarily, edit it and untick "Show in store".', 'Delete gift set')) return;
       try { must(await sb.from('collections').delete().eq('id', c.id).select()); toast('Box deleted.'); views.boxes(); } catch (err) { toast(friendly(err), 'error'); }
     }
   });

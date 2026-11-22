@@ -56,7 +56,7 @@ async function init() {
     </a>`).join('');
 
   const featured = cat.productList.filter((p) => p.is_featured && inStock(p)).slice(0, 4);
-  $('#featuredGrid').innerHTML = featured.map((p) => itemCard(p, cat)).join('') || '<p class="muted">New items are coming soon.</p>';
+  $('#featuredGrid').innerHTML = featured.map((p) => itemCard(p, cat)).join('') || '<p class="muted">New perfumes are coming soon.</p>';
   bindItemCards($('#featuredGrid'), cat);
 }
 init();

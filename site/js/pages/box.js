@@ -10,12 +10,12 @@ async function init() {
   const root = $('#boxRoot');
   let cat;
   try { cat = await loadCatalog(); }
-  catch { showError(root, 'This box could not be loaded. Check your connection and try again.', init); return; }
+  catch { showError(root, 'This gift set could not be loaded. Check your connection and try again.', init); return; }
 
   const slug = new URLSearchParams(location.search).get('slug');
   const b = cat.bySlug.get(slug);
   if (!b) {
-    root.innerHTML = `<div class="state"><h2>Box not found</h2><p>This box may have been removed.</p><a class="btn" href="shop.html">See all boxes</a></div>`;
+    root.innerHTML = `<div class="state"><h2>Gift set not found</h2><p>This gift set may have been removed.</p><a class="btn" href="shop.html">See all gift sets</a></div>`;
     return;
   }
   document.title = `${b.name} Gift Set — FUMEBOX`;
@@ -51,13 +51,13 @@ async function init() {
             ${b.discount_pct > 0 ? `<s class="muted">${aed(b.listPrice)}</s><span class="badge badge-mood">You save ${aed(b.listPrice - b.boxPrice)} (${b.discount_pct}%)</span>` : ''}
           </div>
           ${b.maxQty === 0
-            ? `<p class="notice notice-warn" role="status">This box is out of stock because ${limiting.map((it) => esc(it.product.name)).join(', ') || 'an item'} is sold out. You can still <a href="#" data-customise>customise it</a> with other items.</p>`
+            ? `<p class="notice notice-warn" role="status">This gift set is out of stock because ${limiting.map((it) => esc(it.product.name)).join(', ') || 'a perfume'} is sold out. You can still <a href="#" data-customise>customise it</a> with other items.</p>`
             : `<div class="buy-row">
                  <div class="stepper" aria-label="Quantity"><button type="button" data-step="-1" aria-label="Decrease quantity">−</button><output id="qty" aria-live="polite">1</output><button type="button" data-step="1" aria-label="Increase quantity">+</button></div>
                  <button class="btn" type="button" id="addBtn" ${max === 0 ? 'disabled' : ''}>Add to cart</button>
                </div>
-               <p class="small muted" id="stockNote">${max === 0 ? 'You already have the maximum available in your cart.' : `${b.maxQty <= 5 ? `Only ${b.maxQty} boxes can be made from current stock.` : 'In stock and ready to ship.'}`}</p>`}
-          <button class="btn btn-ghost" type="button" data-customise>Customise this box</button>
+               <p class="small muted" id="stockNote">${max === 0 ? 'You already have the maximum available in your cart.' : `${b.maxQty <= 5 ? `Only ${b.maxQty} sets left in stock.` : 'In stock and ready to ship.'}`}</p>`}
+          <button class="btn btn-ghost" type="button" data-customise>Customise this set</button>
         </div>
       </div>
     </div>`;

@@ -38,7 +38,7 @@ export function toast(message, kind = 'ok') {
 
 // ---------- Header / footer ----------
 const NAV = [
-  ['index.html', 'Home', 'home'], ['shop.html', 'Shop', 'shop'], ['builder.html', 'Build your box', 'builder'],
+  ['index.html', 'Home', 'home'], ['shop.html', 'Shop', 'shop'], ['builder.html', 'Build a gift box', 'builder'],
   ['about.html', 'About', 'about'], ['faq.html', 'Help & returns', 'faq'], ['contact.html', 'Contact', 'contact'],
 ];
 const LOGO = `<svg class="logo-mark" viewBox="0 0 40 40" aria-hidden="true"><rect x="5" y="15" width="30" height="20" rx="4" fill="currentColor"/><path d="M3 11.5a3 3 0 0 1 3-3h28a3 3 0 0 1 3 3V15H3z" fill="currentColor" opacity=".55"/><path d="M20 8.5v26.5" stroke="var(--paper)" stroke-width="3"/><path d="M20 8c-3-6-11-5-8 0m8 0c3-6 11-5 8 0" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg>`;

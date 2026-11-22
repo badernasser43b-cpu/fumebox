@@ -14,7 +14,7 @@ function renderItems() {
   const list = cat.productList.filter((p) => (!q || (p.name + ' ' + p.category).toLowerCase().includes(q)) && (!moodId || p.collection_id === moodId))
     .sort((a, b) => Number(!(a.is_available && a.stock > 0)) - Number(!(b.is_available && b.stock > 0)));
   $('#itemsGrid').innerHTML = list.map((p) => itemCard(p, cat)).join('') ||
-    '<div class="state" style="grid-column:1/-1"><p>No items match your search.</p></div>';
+    '<div class="state" style="grid-column:1/-1"><p>No perfumes match your search.</p></div>';
 }
 
 function renderBox() {
@@ -46,7 +46,7 @@ function renderBox() {
       </div>
     </div>`;
   });
-  for (let k = n; k < CUSTOM_MIN; k++) slots.push(`<div class="slot empty">Add ${k === n ? 'an item' : 'another item'}</div>`);
+  for (let k = n; k < CUSTOM_MIN; k++) slots.push(`<div class="slot empty">Add ${k === n ? 'a perfume' : 'another perfume'}</div>`);
   $('#slots').innerHTML = slots.join('');
   lastAdded = null;
 
@@ -54,13 +54,13 @@ function renderBox() {
   $('#wrapFee').textContent = aed(PACKAGING_AED);
   $('#boxTotal').textContent = n ? aed(pr.unit) : aed(0);
   const ready = n >= CUSTOM_MIN && pr.ok;
-  $('#ruleText').textContent = n < CUSTOM_MIN ? `Add ${CUSTOM_MIN - n} more ${CUSTOM_MIN - n === 1 ? 'item' : 'items'} to complete your box.`
+  $('#ruleText').textContent = n < CUSTOM_MIN ? `Add ${CUSTOM_MIN - n} more ${CUSTOM_MIN - n === 1 ? 'perfume' : 'perfumes'} to complete your box.`
     : !pr.ok ? pr.problem : n >= CUSTOM_MAX ? 'Your box is full.' : `Ready to add. You can add up to ${CUSTOM_MAX - n} more.`;
   $('#ruleText').style.color = !pr.ok && n >= CUSTOM_MIN ? 'var(--danger)' : '';
   $('#addBox').disabled = !ready;
   $('#gift').value = d.gift_message;
 
-  $('#barCount').textContent = n ? `Your box · ${n} ${n === 1 ? 'item' : 'items'}` : 'Your box is empty';
+  $('#barCount').textContent = n ? `Your box · ${n} ${n === 1 ? 'perfume' : 'perfumes'}` : 'Your box is empty';
   $('#barHint').textContent = ready ? 'Ready — tap to review and add to cart' : n < CUSTOM_MIN ? `Add ${CUSTOM_MIN - n} more to complete` : 'Tap to review';
   $('#barTotal').textContent = n ? aed(pr.unit) : aed(0);
 
@@ -96,7 +96,7 @@ async function init() {
     const cur = getDraft().items.find((i) => i.product_id === id);
     const p = cat.products.get(id);
     const next = cur.quantity + Number(b.dataset.d);
-    if (next > Math.min(ITEM_MAX, p.stock)) { toast(next > ITEM_MAX ? `You can add up to ${ITEM_MAX} of the same item.` : `No more ${p.name} in stock.`, 'error'); return; }
+    if (next > Math.min(ITEM_MAX, p.stock)) { toast(next > ITEM_MAX ? `You can add up to ${ITEM_MAX} of the same perfume.` : `No more ${p.name} in stock.`, 'error'); return; }
     draftSet(id, next);
     if (next > cur.quantity) track('builder_add_item', { productId: id });
     renderBox();

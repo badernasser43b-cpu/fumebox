@@ -45,7 +45,7 @@ async function init() {
     list = list.sort(sorters[state.sort]);
     $('#count').textContent = `${list.length} ${list.length === 1 ? 'item' : 'items'}`;
     $('#itemsGrid').innerHTML = list.map((p) => itemCard(p, cat)).join('') ||
-      `<div class="state" style="grid-column:1/-1"><h2>No items match</h2><p>Try a different word or clear the filters.</p><button class="btn btn-ghost" type="button" id="clear">Clear filters</button></div>`;
+      `<div class="state" style="grid-column:1/-1"><h2>No perfumes match</h2><p>Try a different word or clear the filters.</p><button class="btn btn-ghost" type="button" id="clear">Clear filters</button></div>`;
     $('#clear')?.addEventListener('click', () => { Object.assign(state, { q: '', mood: '', category: '' }); $('#q').value = ''; $('#category').value = ''; syncChips(); render(); });
   };
   const syncChips = () => $('#moodChips').querySelectorAll('.chip').forEach((c) => c.setAttribute('aria-pressed', String(c.dataset.mood === state.mood)));

@@ -42,7 +42,7 @@ function lineHtml(x) {
     <div class="thumb"><img src="images/perfume/boxes/custom.webp" alt=""></div>
     <div>
       <h3>Build-Your-Own Box</h3>
-      <ul>${x.items.map((it) => `<li>${it.quantity > 1 ? it.quantity + ' × ' : ''}${esc(it.product?.name || 'Removed item')}${it.product ? ' — ' + aed(it.product.price_aed * it.quantity) : ''}</li>`).join('')}<li>Gift box &amp; wrapping — ${aed(15)}</li></ul>
+      <ul>${x.items.map((it) => `<li>${it.quantity > 1 ? it.quantity + ' × ' : ''}${esc(it.product?.name || 'Removed perfume')}${it.product ? ' — ' + aed(it.product.price_aed * it.quantity) : ''}</li>`).join('')}<li>Gift box &amp; wrapping — ${aed(15)}</li></ul>
       <label class="gift-input small"><span class="sr">Gift message</span><input type="text" maxlength="200" data-gift="${l.id}" value="${esc(l.gift_message || '')}" placeholder="Add a gift message (optional)"></label>
       ${x.problem ? `<p class="problem" role="alert">${esc(x.problem)}</p>` : ''}
     </div>
@@ -56,8 +56,8 @@ function lineHtml(x) {
 function render() {
   const lines = getCart();
   if (!lines.length) {
-    root.innerHTML = `<div class="state"><h2>Your cart is empty</h2><p>Pick a signature box or build one of your own.</p>
-      <div class="hero-actions" style="justify-content:center"><a class="btn" href="shop.html">Shop boxes</a><a class="btn btn-ghost" href="builder.html">Build your own box</a></div></div>`;
+    root.innerHTML = `<div class="state"><h2>Your cart is empty</h2><p>Pick a perfume or gift set, or build a gift box of your own.</p>
+      <div class="hero-actions" style="justify-content:center"><a class="btn" href="shop.html">Shop perfumes</a><a class="btn btn-ghost" href="builder.html">Build your own box</a></div></div>`;
     return;
   }
   const t = cartTotals(lines, cat);
@@ -74,7 +74,7 @@ function render() {
   if (!t.ok) {
     $('#placeBtn').disabled = true;
     $('#formError').hidden = false;
-    $('#formError').textContent = 'Fix the items marked in your cart before placing your order.';
+    $('#formError').textContent = 'Fix the perfumes marked in your cart before placing your order.';
   }
   bindForm();
 }
