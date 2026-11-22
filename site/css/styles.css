@@ -402,3 +402,8 @@ details.qa .a { padding: 0 1.25rem 1.1rem; color: var(--muted); }
 .slot img { background: var(--photo-bg); }
 .cart-line .thumb { background: var(--photo-bg); }
 .cart-line .thumb img { object-fit: cover; padding: 0; }
+@media (max-width: 520px) {
+  .items-grid { grid-template-columns: repeat(2, 1fr); gap: .75rem; }
+  .item-card h3 { min-height: 0; font-size: .95rem; }
+  .item-card .body { padding: .75rem; }
+}
