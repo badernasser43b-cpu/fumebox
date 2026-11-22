@@ -20,7 +20,7 @@ async function init() {
         <p>${esc(b.tagline)}</p>
         <div class="foot"><span>${aed(b.boxPrice)}</span><span class="small muted">${b.maxQty === 0 ? 'Out of stock' : b.items.length + ' items'}</span></div>
       </div>
-    </a>`).join('') || '<p class="muted">No signature boxes are available right now.</p>';
+    </a>`).join('') || '<p class="muted">No gift sets are available right now.</p>';
 
   const params = new URLSearchParams(location.search);
   state.mood = params.get('mood') || '';

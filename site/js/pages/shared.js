@@ -65,8 +65,8 @@ export function openItem(p, cat, onAdd) {
         <p class="muted">${esc(p.description)}</p>
         <p class="price" style="font-size:1.6rem">${aed(p.price_aed)}</p>
         <button class="btn" type="button" data-add ${can ? '' : 'disabled'}>${can ? 'Add to my gift box' : 'Not available right now'}</button>
-        ${box && box.items.some((it) => it.product.id === p.id) ? `<p class="small muted">Also included in the <a href="box.html?slug=${encodeURIComponent(box.slug)}">${esc(box.name)} signature box</a>.</p>` : ''}
-        <p class="small muted">Items are sold inside a Build-Your-Own box (3–8 items, plus AED 15 gift box and wrapping).</p>
+        ${box && box.items.some((it) => it.product.id === p.id) ? `<p class="small muted">Also included in the <a href="box.html?slug=${encodeURIComponent(box.slug)}">${esc(box.name)} Gift Set</a>.</p>` : ''}
+        <p class="small muted">Single perfumes are sold inside a Build-Your-Own gift box (3–8 perfumes, plus AED 15 for the gift box and wrapping).</p>
       </div>
     </div>
     <button class="sheet-close" type="button" aria-label="Close">×</button>`;
